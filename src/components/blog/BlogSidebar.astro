@@ -28,11 +28,18 @@ posts.forEach((post) => {
   }
 });
 const tags = Array.from(tagsMap.entries()).map(([slug, title]) => ({ slug, title })).slice(0, 15);
+
+// Search index containing minimal required data for client-side search
+const searchablePosts = posts.map((post) => ({
+  title: post.title || '',
+  permalink: getPermalink(post.permalink, 'post'),
+  excerpt: post.excerpt || '',
+}));
 ---
 
 <aside class="space-y-8 lg:sticky lg:top-24">
   {/* Search Widget */}
-  <div class="p-6 rounded-2xl border border-gray-100 dark:border-slate-800 bg-white dark:bg-slate-900/50 backdrop-blur-sm shadow-sm">
+  <div class="p-6 rounded-2xl border border-gray-100 dark:border-slate-800 bg-white dark:bg-slate-900/50 backdrop-blur-sm shadow-sm relative">
     <h3 class="text-lg font-bold font-heading text-heading mb-4 flex items-center gap-2">
       <Icon name="tabler:search" class="w-5 h-5 text-primary dark:text-blue-400" />
       Search Blog
@@ -40,13 +47,22 @@ const tags = Array.from(tagsMap.entries()).map(([slug, title]) => ({ slug, title
     <div class="relative">
       <input
         type="text"
+        id="search-input"
         placeholder="Type to search..."
-        class="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-slate-800 bg-gray-50/50 dark:bg-slate-950/50 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-blue-500 text-sm"
-        disabled
+        class="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-slate-850 bg-gray-50/50 dark:bg-slate-950/50 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-blue-500 text-sm pr-10 text-page"
+        autocomplete="off"
       />
-      <span class="absolute right-3 top-3 text-[10px] uppercase font-bold text-muted bg-gray-200/50 dark:bg-slate-800 px-1.5 py-0.5 rounded">
-        Offline
+      <span class="absolute right-3 top-3 text-[10px] uppercase font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/30 px-1.5 py-0.5 rounded">
+        Live
       </span>
+    </div>
+
+    {/* Search Results Dropdown */}
+    <div
+      id="search-results"
+      class="absolute left-6 right-6 mt-2 bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 rounded-xl shadow-xl z-50 max-h-60 overflow-y-auto hidden divide-y divide-gray-100 dark:divide-slate-800"
+    >
+      <ul class="py-2 text-xs" id="search-results-list"></ul>
     </div>
   </div>
 
@@ -121,3 +137,84 @@ const tags = Array.from(tagsMap.entries()).map(([slug, title]) => ({ slug, title
     </div>
   )}
 </aside>
+
+{/* Search Index Script */}
+<script is:inline id="search-data" type="application/json" set:html={JSON.stringify(searchablePosts)}></script>
+
+{/* Client Search Interactivity */}
+<script is:inline>
+  const initSearch = () => {
+    const searchInput = document.getElementById('search-input');
+    const resultsContainer = document.getElementById('search-results');
+    const resultsList = document.getElementById('search-results-list');
+    const searchDataEl = document.getElementById('search-data');
+
+    if (!searchInput || !resultsContainer || !resultsList || !searchDataEl) return;
+
+    let posts = [];
+    try {
+      posts = JSON.parse(searchDataEl.textContent || '[]');
+    } catch (err) {
+      console.error('Error parsing search index:', err);
+    }
+
+    searchInput.addEventListener('input', (e) => {
+      const query = e.target.value.toLowerCase().trim();
+
+      if (!query) {
+        resultsContainer.classList.add('hidden');
+        return;
+      }
+
+      const matches = posts.filter((post) => {
+        const title = (post.title || '').toLowerCase();
+        const excerpt = (post.excerpt || '').toLowerCase();
+        return title.includes(query) || excerpt.includes(query);
+      });
+
+      resultsList.innerHTML = '';
+
+      if (matches.length === 0) {
+        const li = document.createElement('li');
+        li.className = 'px-4 py-3 text-xs text-muted text-center';
+        li.textContent = 'No matching posts found';
+        resultsList.appendChild(li);
+      } else {
+        matches.slice(0, 5).forEach((post) => {
+          const li = document.createElement('li');
+          const a = document.createElement('a');
+          a.href = post.permalink;
+          a.className =
+            'block px-4 py-2.5 text-xs text-page hover:bg-gray-50 dark:hover:bg-slate-800/50 hover:text-primary dark:hover:text-blue-400 transition-colors font-medium line-clamp-1';
+          a.textContent = post.title;
+          li.appendChild(a);
+          resultsList.appendChild(li);
+        });
+      }
+
+      resultsContainer.classList.remove('hidden');
+    });
+
+    const onClickOutside = (e) => {
+      if (searchInput && resultsContainer && !searchInput.contains(e.target) && !resultsContainer.contains(e.target)) {
+        resultsContainer.classList.add('hidden');
+      }
+    };
+
+    if (window.cleanupSearchClickOutside) {
+      document.removeEventListener('click', window.cleanupSearchClickOutside);
+    }
+    window.cleanupSearchClickOutside = onClickOutside;
+    document.addEventListener('click', onClickOutside);
+  };
+
+  // Run on initial load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSearch);
+  } else {
+    initSearch();
+  }
+
+  // Run on Astro View Transition navigation
+  document.addEventListener('astro:page-load', initSearch);
+</script>
