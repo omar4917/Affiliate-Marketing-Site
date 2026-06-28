@@ -1,6 +1,6 @@
 site:
   name: Affiliate Reviews
-  site: 'https://synchrove.com'
+  site: 'http://localhost:4321'
   base: '/'
   trailingSlash: false
 
