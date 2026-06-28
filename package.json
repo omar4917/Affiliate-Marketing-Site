@@ -1,7 +1,7 @@
 {
-  "name": "@onwidget/astrowind",
-  "version": "1.0.0-beta.63",
-  "description": "AstroWind: A free template using Astro 6 and Tailwind CSS v4. Astro starter theme.",
+  "name": "affiliate-marketing-site",
+  "version": "1.0.0",
+  "description": "Affiliate Marketing Site built with Astro and Tailwind CSS",
   "type": "module",
   "private": true,
   "engines": {
@@ -11,6 +11,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
+    "cms": "npx decap-server",
     "preview": "astro preview",
     "astro": "astro",
     "check": "npm run check:astro && npm run check:eslint && npm run check:prettier",
