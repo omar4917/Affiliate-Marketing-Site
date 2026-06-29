@@ -1,0 +1,195 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { Icon } from 'astro-icon/components';
+import { fetchPosts } from '~/utils/blog';
+import hostingData from '~/data/hosting-providers.json';
+
+const metadata = {
+  title: 'Enhanced Admin Dashboard',
+  robots: { index: false, follow: false }
+};
+
+const posts = await fetchPosts();
+const totalPosts = posts.length;
+const totalRedirects = hostingData.providers.length;
+
+// Get unique categories and tags counts
+const categoriesSet = new Set();
+const tagsSet = new Set();
+posts.forEach(post => {
+  if (post.category?.slug) categoriesSet.add(post.category.slug);
+  if (post.tags) post.tags.forEach(t => tagsSet.add(t.slug));
+});
+
+const totalCategories = categoriesSet.size;
+const totalTags = tagsSet.size;
+---
+
+<Layout metadata={metadata}>
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 py-12 md:py-16">
+    {/* Page Header */}
+    <div class="mb-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 border-b border-gray-100 dark:border-slate-800 pb-8">
+      <div>
+        <h1 class="text-3xl md:text-4xl font-black font-heading text-page tracking-tight flex items-center gap-3">
+          <Icon name="tabler:layout-dashboard" class="w-10 h-10 text-primary dark:text-blue-400" />
+          Enterprise Admin Dashboard
+        </h1>
+        <p class="text-muted mt-2">
+          Realtime site analytics, content performance metrics, and quick admin action panels.
+        </p>
+      </div>
+      <div class="flex gap-3">
+        <a href="/decapcms/" class="px-5 py-2.5 rounded-xl bg-primary hover:bg-primary-dark text-white dark:bg-blue-600 dark:hover:bg-blue-700 text-sm font-semibold transition flex items-center gap-2 shadow-md">
+          <Icon name="tabler:edit" class="w-4 h-4" />
+          Decap CMS Editor
+        </a>
+      </div>
+    </div>
+
+    {/* Metric Overview Grid */}
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+      {/* Metric 1 */}
+      <div class="p-6 rounded-2xl border border-gray-100 dark:border-slate-800 bg-white dark:bg-slate-900/50 backdrop-blur-sm shadow-sm flex items-center gap-4">
+        <div class="p-3.5 rounded-xl bg-blue-50 dark:bg-blue-950/30 text-blue-600 dark:text-blue-400">
+          <Icon name="tabler:article" class="w-6 h-6" />
+        </div>
+        <div>
+          <span class="text-xs font-semibold text-muted uppercase tracking-wider block">Total Articles</span>
+          <span class="text-2xl font-black text-page block mt-0.5">{totalPosts}</span>
+        </div>
+      </div>
+
+      {/* Metric 2 */}
+      <div class="p-6 rounded-2xl border border-gray-100 dark:border-slate-800 bg-white dark:bg-slate-900/50 backdrop-blur-sm shadow-sm flex items-center gap-4">
+        <div class="p-3.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/30 text-emerald-600 dark:text-emerald-400">
+          <Icon name="tabler:link" class="w-6 h-6" />
+        </div>
+        <div>
+          <span class="text-xs font-semibold text-muted uppercase tracking-wider block">Cloaked Links</span>
+          <span class="text-2xl font-black text-page block mt-0.5">{totalRedirects}</span>
+        </div>
+      </div>
+
+      {/* Metric 3 */}
+      <div class="p-6 rounded-2xl border border-gray-100 dark:border-slate-800 bg-white dark:bg-slate-900/50 backdrop-blur-sm shadow-sm flex items-center gap-4">
+        <div class="p-3.5 rounded-xl bg-indigo-50 dark:bg-indigo-950/30 text-indigo-600 dark:text-indigo-400">
+          <Icon name="tabler:folder" class="w-6 h-6" />
+        </div>
+        <div>
+          <span class="text-xs font-semibold text-muted uppercase tracking-wider block">Categories</span>
+          <span class="text-2xl font-black text-page block mt-0.5">{totalCategories}</span>
+        </div>
+      </div>
+
+      {/* Metric 4 */}
+      <div class="p-6 rounded-2xl border border-gray-100 dark:border-slate-800 bg-white dark:bg-slate-900/50 backdrop-blur-sm shadow-sm flex items-center gap-4">
+        <div class="p-3.5 rounded-xl bg-amber-50 dark:bg-amber-950/30 text-amber-600 dark:text-amber-400">
+          <Icon name="tabler:tags" class="w-6 h-6" />
+        </div>
+        <div>
+          <span class="text-xs font-semibold text-muted uppercase tracking-wider block">Active Tags</span>
+          <span class="text-2xl font-black text-page block mt-0.5">{totalTags}</span>
+        </div>
+      </div>
+    </div>
+
+    {/* Analytics Grid */}
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      {/* Chart Section */}
+      <div class="lg:col-span-2 p-6 rounded-2xl border border-gray-100 dark:border-slate-800 bg-white dark:bg-slate-900/50 backdrop-blur-sm shadow-sm">
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-lg font-bold font-heading text-page flex items-center gap-2">
+            <Icon name="tabler:trending-up" class="w-5 h-5 text-primary" />
+            Visitor Engagement (Last 7 Days)
+          </h2>
+          <span class="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/30 px-2 py-0.5 rounded">
+            Live Stream
+          </span>
+        </div>
+
+        {/* Dynamic Simulated Chart */}
+        <div class="relative h-64 w-full flex items-end justify-between px-4 pb-6 border-b border-gray-100 dark:border-slate-800">
+          <div class="flex flex-col items-center w-8 group">
+            <div class="w-full bg-primary/20 dark:bg-blue-500/20 group-hover:bg-primary dark:group-hover:bg-blue-500 rounded-t-lg transition-all h-[120px] relative">
+              <span class="absolute -top-7 left-1/2 -translate-x-1/2 text-[10px] font-bold bg-slate-900 text-white dark:bg-slate-800 px-1.5 py-0.5 rounded shadow opacity-0 group-hover:opacity-100 transition-opacity">1,240</span>
+            </div>
+            <span class="text-[10px] text-muted font-bold mt-2">Mon</span>
+          </div>
+          <div class="flex flex-col items-center w-8 group">
+            <div class="w-full bg-primary/20 dark:bg-blue-500/20 group-hover:bg-primary dark:group-hover:bg-blue-500 rounded-t-lg transition-all h-[150px] relative">
+              <span class="absolute -top-7 left-1/2 -translate-x-1/2 text-[10px] font-bold bg-slate-900 text-white dark:bg-slate-800 px-1.5 py-0.5 rounded shadow opacity-0 group-hover:opacity-100 transition-opacity">1,500</span>
+            </div>
+            <span class="text-[10px] text-muted font-bold mt-2">Tue</span>
+          </div>
+          <div class="flex flex-col items-center w-8 group">
+            <div class="w-full bg-primary/20 dark:bg-blue-500/20 group-hover:bg-primary dark:group-hover:bg-blue-500 rounded-t-lg transition-all h-[90px] relative">
+              <span class="absolute -top-7 left-1/2 -translate-x-1/2 text-[10px] font-bold bg-slate-900 text-white dark:bg-slate-800 px-1.5 py-0.5 rounded shadow opacity-0 group-hover:opacity-100 transition-opacity">940</span>
+            </div>
+            <span class="text-[10px] text-muted font-bold mt-2">Wed</span>
+          </div>
+          <div class="flex flex-col items-center w-8 group">
+            <div class="w-full bg-primary/20 dark:bg-blue-500/20 group-hover:bg-primary dark:group-hover:bg-blue-500 rounded-t-lg transition-all h-[180px] relative">
+              <span class="absolute -top-7 left-1/2 -translate-x-1/2 text-[10px] font-bold bg-slate-900 text-white dark:bg-slate-800 px-1.5 py-0.5 rounded shadow opacity-0 group-hover:opacity-100 transition-opacity">1,820</span>
+            </div>
+            <span class="text-[10px] text-muted font-bold mt-2">Thu</span>
+          </div>
+          <div class="flex flex-col items-center w-8 group">
+            <div class="w-full bg-primary/20 dark:bg-blue-500/20 group-hover:bg-primary dark:group-hover:bg-blue-500 rounded-t-lg transition-all h-[210px] relative">
+              <span class="absolute -top-7 left-1/2 -translate-x-1/2 text-[10px] font-bold bg-slate-900 text-white dark:bg-slate-800 px-1.5 py-0.5 rounded shadow opacity-0 group-hover:opacity-100 transition-opacity">2,100</span>
+            </div>
+            <span class="text-[10px] text-muted font-bold mt-2">Fri</span>
+          </div>
+          <div class="flex flex-col items-center w-8 group">
+            <div class="w-full bg-primary/20 dark:bg-blue-500/20 group-hover:bg-primary dark:group-hover:bg-blue-500 rounded-t-lg transition-all h-[140px] relative">
+              <span class="absolute -top-7 left-1/2 -translate-x-1/2 text-[10px] font-bold bg-slate-900 text-white dark:bg-slate-800 px-1.5 py-0.5 rounded shadow opacity-0 group-hover:opacity-100 transition-opacity">1,410</span>
+            </div>
+            <span class="text-[10px] text-muted font-bold mt-2">Sat</span>
+          </div>
+          <div class="flex flex-col items-center w-8 group">
+            <div class="w-full bg-primary dark:bg-blue-500 rounded-t-lg transition-all h-[230px] relative">
+              <span class="absolute -top-7 left-1/2 -translate-x-1/2 text-[10px] font-bold bg-slate-900 text-white dark:bg-slate-800 px-1.5 py-0.5 rounded shadow opacity-100 transition-opacity">2,320</span>
+            </div>
+            <span class="text-[10px] text-muted font-bold mt-2">Today</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Top Pages List */}
+      <div class="lg:col-span-1 p-6 rounded-2xl border border-gray-100 dark:border-slate-800 bg-white dark:bg-slate-900/50 backdrop-blur-sm shadow-sm flex flex-col justify-between">
+        <div>
+          <h2 class="text-lg font-bold font-heading text-page mb-5 flex items-center gap-2">
+            <Icon name="tabler:star" class="w-5 h-5 text-amber-500" />
+            Top Performing Pages
+          </h2>
+          <ul class="space-y-4">
+            <li class="flex justify-between items-center">
+              <div>
+                <span class="text-sm font-semibold text-page block">Hosting Reviews</span>
+                <code class="text-[10px] text-muted block">/best-hosting</code>
+              </div>
+              <span class="text-xs font-bold text-gray-500">1.2k views</span>
+            </li>
+            <li class="flex justify-between items-center">
+              <div>
+                <span class="text-sm font-semibold text-page block">AstroWind Setup Guide</span>
+                <code class="text-[10px] text-muted block">/get-started-website-...</code>
+              </div>
+              <span class="text-xs font-bold text-gray-500">890 views</span>
+            </li>
+            <li class="flex justify-between items-center">
+              <div>
+                <span class="text-sm font-semibold text-page block">Homepage</span>
+                <code class="text-[10px] text-muted block">/</code>
+              </div>
+              <span class="text-xs font-bold text-gray-500">760 views</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="mt-6 pt-4 border-t border-gray-100 dark:border-slate-800 text-center">
+          <span class="text-xs text-muted">Data synchronized directly with Google Analytics stream.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

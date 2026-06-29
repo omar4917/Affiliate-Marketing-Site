@@ -29,3 +29,55 @@ collections:
       - { label: 'Publish Date', name: 'publishDate', widget: 'datetime', required: false }
       - { label: 'Author', name: 'author', widget: 'string' }
       - { label: 'Content', name: 'body', widget: 'markdown' }
+
+  - name: 'settings'
+    label: 'Site Settings'
+    delete: false
+    files:
+      - name: 'hosting'
+        label: 'Hosting Reviews'
+        file: 'src/data/hosting-providers.json'
+        fields:
+          - label: 'Hosting Providers List'
+            name: 'providers'
+            widget: 'list'
+            fields:
+              - { label: 'Title', name: 'title', widget: 'string' }
+              - { label: 'Logo Image URL', name: 'image', widget: 'string' }
+              - { label: 'Rating', name: 'rating', widget: 'number', value_type: 'float' }
+              - { label: 'Verdict', name: 'verdict', widget: 'string' }
+              - { label: 'Best Price', name: 'price', widget: 'string' }
+              - { label: 'Affiliate URL', name: 'affiliateUrl', widget: 'string' }
+              - { label: 'CTA Text', name: 'ctaText', widget: 'string' }
+              - { label: 'Is Winner', name: 'isWinner', widget: 'boolean', required: false }
+              - { label: 'Winner Label (Badge)', name: 'winnerLabel', widget: 'string', required: false }
+              - {
+                  label: 'Ribbon Color',
+                  name: 'ribbonColor',
+                  widget: 'select',
+                  options: ['primary', 'secondary', 'accent', 'success', 'warning'],
+                  required: false,
+                }
+              - { label: 'Review Description', name: 'description', widget: 'text' }
+              - {
+                  label: 'Specs',
+                  name: 'specs',
+                  widget: 'object',
+                  fields:
+                    - { label: 'Primary Framework', name: 'Primary Framework', widget: 'string' }
+                    - { label: 'Bandwidth Limit', name: 'Bandwidth Limit', widget: 'string' }
+                    - { label: 'Edge Functions', name: 'Edge Functions', widget: 'string' }
+                    - { label: 'Analytics', name: 'Analytics', widget: 'string' },
+                }
+              - {
+                  label: 'Pros',
+                  name: 'pros',
+                  widget: 'list',
+                  field: { label: 'Pro', name: 'pro', widget: 'string' },
+                }
+              - {
+                  label: 'Cons',
+                  name: 'cons',
+                  widget: 'list',
+                  field: { label: 'Con', name: 'con', widget: 'string' },
+                }

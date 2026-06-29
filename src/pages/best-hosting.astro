@@ -5,7 +5,8 @@ import ComparisonTable from '~/components/ui/ComparisonTable.astro';
 import ProductReviewCard from '~/components/ui/ProductReviewCard.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
-import hostingProviders from '~/data/hosting-providers.json';
+import hostingData from '~/data/hosting-providers.json';
+const hostingProviders = hostingData.providers;
 
 const metadata = {
   title: 'Best Developer Hosting Platforms of 2026 - Affiliate Reviews',
