@@ -6,72 +6,76 @@ import Layout from '~/layouts/PageLayout.astro';
 
 const metadata = {
   title: 'About Synchrove',
-  description: 'Learn about Synchrove, our review standards, and how we help developers find the best cloud hosting and developer tools.',
+  description:
+    'Learn about Synchrove, our review standards, and how we help you find the best online tools and consumer products.',
 };
 ---
 
 <Layout metadata={metadata}>
   {/* Hero Section */}
   <Hero
-    tagline="Our Mission"
+    tagline="About Us"
     image={{
-      src: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1200&q=80',
-      alt: 'Developers collaborating on code',
+      src: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80',
+      alt: 'Analyzing reviews and product charts',
     }}
   >
     <Fragment slot="title">
-      Helping you choose the best <br />
-      <span class="text-accent dark:text-blue-400">Developer & Cloud Hosting</span> tools
+      Your trusted guide to finding the <br />
+      <span class="text-accent dark:text-blue-400">Best Products & Tools</span>
     </Fragment>
 
     <Fragment slot="subtitle">
-      Synchrove was founded to cut through the marketing hype of modern cloud platforms. We test, benchmark, and review web hosting, developer resources, and SaaS products so you can launch faster, scale efficiently, and save money.
+      Synchrove is an independent review and recommendation portal. Our mission is simple: we search the web, analyze
+      specifications, compile real-user feedback, and write deep-dive comparisons on digital items, developer resources,
+      and consumer products so you can buy with confidence.
     </Fragment>
   </Hero>
 
   {/* Review Process / Core Values */}
   <Steps2
-    title="Our Review Standards"
-    subtitle="We believe in transparency, speed, and real-world testing. Here is how we evaluate developer products:"
+    title="Why Trust Synchrove?"
+    subtitle="We do the research so you don't have to. Here is our affiliate review philosophy:"
     items={[
       {
-        title: 'Real-world Benchmarking',
+        title: 'Objective Research',
         description:
-          'We do not just copy specification sheets. We deploy actual projects on Vercel, Netlify, Cloudflare Pages, and others to test raw build speeds, edge performance, and uptime.',
+          'We evaluate products based on features, value for money, user feedback, and real-world utility, highlighting both the positives and negatives.',
       },
       {
-        title: 'No Bias, True Opinions',
+        title: 'Affiliate Transparency',
         description:
-          'While we use affiliate links to support our publishing costs, our reviews are 100% independent. If a hosting provider has high overage fees or slow deployment queues, we call it out.',
+          'We partner with top platforms (including Amazon and digital software providers). When you click our links and make a purchase, we earn a small commission at zero extra cost to you. This support keeps our reviews independent and free.',
       },
       {
-        title: 'Developer Focused',
+        title: 'Up-to-Date Deals',
         description:
-          'Our reviews focus on developer experience (DX), Git integration flow, environment configurations, and documentation usability.',
+          'Prices and product versions change fast. We monitor our recommendation databases and update deal links instantly so you always get the best active offers.',
       },
     ]}
   />
 
   {/* Features3 - Focus Areas */}
   <Features3
-    title="What We Cover"
-    subtitle="We analyze the core layers of modern web infrastructure to keep your projects fast and reliable."
+    title="What We Review"
+    subtitle="From digital software tools to physical products, we cover the essentials."
     columns={3}
     items={[
       {
-        title: 'Frontend Hosting',
-        description: 'Detailed comparisons of Vercel, Netlify, Cloudflare Pages, and AWS Amplify.',
-        icon: 'tabler:brand-tailwind',
+        title: 'SaaS & Digital Software',
+        description: 'Comparisons of design tools, website builders, templates, and productivity software.',
+        icon: 'tabler:app-window',
       },
       {
-        title: 'Developer Frameworks',
-        description: 'Guides and optimizations for building static and SSR apps with Astro, Next.js, and SvelteKit.',
+        title: 'Developer Resources',
+        description: 'Guides on frontend frameworks, code template structures, and web hosting platforms.',
         icon: 'tabler:code',
       },
       {
-        title: 'Serverless & Database',
-        description: 'Evaluations of serverless compute, edge networks, and modern databases.',
-        icon: 'tabler:database',
+        title: 'Consumer Products',
+        description:
+          'Reviews and lists of hardware, gadgets, and popular everyday products from major stores like Amazon.',
+        icon: 'tabler:shopping-cart',
       },
     ]}
   />

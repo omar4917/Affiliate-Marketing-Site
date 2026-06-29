@@ -59,25 +59,19 @@ collections:
                   required: false,
                 }
               - { label: 'Review Description', name: 'description', widget: 'text' }
-              - {
-                  label: 'Specs',
-                  name: 'specs',
-                  widget: 'object',
-                  fields:
-                    - { label: 'Primary Framework', name: 'Primary Framework', widget: 'string' }
-                    - { label: 'Bandwidth Limit', name: 'Bandwidth Limit', widget: 'string' }
-                    - { label: 'Edge Functions', name: 'Edge Functions', widget: 'string' }
-                    - { label: 'Analytics', name: 'Analytics', widget: 'string' },
-                }
-              - {
-                  label: 'Pros',
-                  name: 'pros',
-                  widget: 'list',
-                  field: { label: 'Pro', name: 'pro', widget: 'string' },
-                }
-              - {
-                  label: 'Cons',
-                  name: 'cons',
-                  widget: 'list',
-                  field: { label: 'Con', name: 'con', widget: 'string' },
-                }
+              - label: 'Specs'
+                name: 'specs'
+                widget: 'object'
+                fields:
+                  - { label: 'Primary Framework', name: 'Primary Framework', widget: 'string' }
+                  - { label: 'Bandwidth Limit', name: 'Bandwidth Limit', widget: 'string' }
+                  - { label: 'Edge Functions', name: 'Edge Functions', widget: 'string' }
+                  - { label: 'Analytics', name: 'Analytics', widget: 'string' }
+              - label: 'Pros'
+                name: 'pros'
+                widget: 'list'
+                field: { label: 'Pro', name: 'pro', widget: 'string' }
+              - label: 'Cons'
+                name: 'cons'
+                widget: 'list'
+                field: { label: 'Con', name: 'con', widget: 'string' }

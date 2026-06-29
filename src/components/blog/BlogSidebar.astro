@@ -27,7 +27,9 @@ posts.forEach((post) => {
     });
   }
 });
-const tags = Array.from(tagsMap.entries()).map(([slug, title]) => ({ slug, title })).slice(0, 15);
+const tags = Array.from(tagsMap.entries())
+  .map(([slug, title]) => ({ slug, title }))
+  .slice(0, 15);
 
 // Search index containing minimal required data for client-side search
 const searchablePosts = posts.map((post) => ({
@@ -39,7 +41,9 @@ const searchablePosts = posts.map((post) => ({
 
 <aside class="space-y-8 lg:sticky lg:top-24">
   {/* Search Widget */}
-  <div class="p-6 rounded-2xl border border-gray-100 dark:border-slate-800 bg-white dark:bg-slate-900/50 backdrop-blur-sm shadow-sm relative">
+  <div
+    class="p-6 rounded-2xl border border-gray-100 dark:border-slate-800 bg-white dark:bg-slate-900/50 backdrop-blur-sm shadow-sm relative"
+  >
     <h3 class="text-lg font-bold font-heading text-heading mb-4 flex items-center gap-2">
       <Icon name="tabler:search" class="w-5 h-5 text-primary dark:text-blue-400" />
       Search Blog
@@ -52,7 +56,9 @@ const searchablePosts = posts.map((post) => ({
         class="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-slate-850 bg-gray-50/50 dark:bg-slate-950/50 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-blue-500 text-sm pr-10 text-page"
         autocomplete="off"
       />
-      <span class="absolute right-3 top-3 text-[10px] uppercase font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/30 px-1.5 py-0.5 rounded">
+      <span
+        class="absolute right-3 top-3 text-[10px] uppercase font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/30 px-1.5 py-0.5 rounded"
+      >
         Live
       </span>
     </div>
@@ -67,79 +73,87 @@ const searchablePosts = posts.map((post) => ({
   </div>
 
   {/* Recent Posts Widget */}
-  <div class="p-6 rounded-2xl border border-gray-100 dark:border-slate-800 bg-white dark:bg-slate-900/50 backdrop-blur-sm shadow-sm">
+  <div
+    class="p-6 rounded-2xl border border-gray-100 dark:border-slate-800 bg-white dark:bg-slate-900/50 backdrop-blur-sm shadow-sm"
+  >
     <h3 class="text-lg font-bold font-heading text-heading mb-4 flex items-center gap-2">
       <Icon name="tabler:news" class="w-5 h-5 text-primary dark:text-blue-400" />
       Recent Posts
     </h3>
     <ul class="space-y-4">
-      {recentPosts.map((post) => (
-        <li class="group flex gap-4 items-start">
-          <div class="flex-grow min-w-0">
-            <a
-              href={getPermalink(post.permalink, 'post')}
-              class="text-sm font-semibold text-page hover:text-primary dark:hover:text-blue-400 transition-colors line-clamp-2 leading-snug group-hover:underline"
-            >
-              {post.title}
-            </a>
-            <span class="text-xs text-muted mt-1 flex items-center gap-1">
-              <Icon name="tabler:calendar" class="w-3.5 h-3.5" />
-              {getFormattedDate(post.publishDate)}
-            </span>
-          </div>
-        </li>
-      ))}
+      {
+        recentPosts.map((post) => (
+          <li class="group flex gap-4 items-start">
+            <div class="flex-grow min-w-0">
+              <a
+                href={getPermalink(post.permalink, 'post')}
+                class="text-sm font-semibold text-page hover:text-primary dark:hover:text-blue-400 transition-colors line-clamp-2 leading-snug group-hover:underline"
+              >
+                {post.title}
+              </a>
+              <span class="text-xs text-muted mt-1 flex items-center gap-1">
+                <Icon name="tabler:calendar" class="w-3.5 h-3.5" />
+                {getFormattedDate(post.publishDate)}
+              </span>
+            </div>
+          </li>
+        ))
+      }
     </ul>
   </div>
 
   {/* Categories Widget */}
-  {categories.length > 0 && (
-    <div class="p-6 rounded-2xl border border-gray-100 dark:border-slate-800 bg-white dark:bg-slate-900/50 backdrop-blur-sm shadow-sm">
-      <h3 class="text-lg font-bold font-heading text-heading mb-4 flex items-center gap-2">
-        <Icon name="tabler:folder" class="w-5 h-5 text-primary dark:text-blue-400" />
-        Categories
-      </h3>
-      <ul class="space-y-2">
-        {categories.map((category) => (
-          <li>
-            <a
-              href={getPermalink(category.slug, 'category')}
-              class="flex items-center justify-between px-3 py-2 rounded-xl text-sm font-medium text-muted hover:text-primary dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-slate-800/50 transition-all duration-200"
-            >
-              <span class="flex items-center gap-2">
-                <Icon name="tabler:chevron-right" class="w-3.5 h-3.5 text-gray-400 group-hover:text-primary" />
-                {category.title}
-              </span>
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  )}
+  {
+    categories.length > 0 && (
+      <div class="p-6 rounded-2xl border border-gray-100 dark:border-slate-800 bg-white dark:bg-slate-900/50 backdrop-blur-sm shadow-sm">
+        <h3 class="text-lg font-bold font-heading text-heading mb-4 flex items-center gap-2">
+          <Icon name="tabler:folder" class="w-5 h-5 text-primary dark:text-blue-400" />
+          Categories
+        </h3>
+        <ul class="space-y-2">
+          {categories.map((category) => (
+            <li>
+              <a
+                href={getPermalink(category.slug, 'category')}
+                class="flex items-center justify-between px-3 py-2 rounded-xl text-sm font-medium text-muted hover:text-primary dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-slate-800/50 transition-all duration-200"
+              >
+                <span class="flex items-center gap-2">
+                  <Icon name="tabler:chevron-right" class="w-3.5 h-3.5 text-gray-400 group-hover:text-primary" />
+                  {category.title}
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
 
   {/* Tags Widget */}
-  {tags.length > 0 && (
-    <div class="p-6 rounded-2xl border border-gray-100 dark:border-slate-800 bg-white dark:bg-slate-900/50 backdrop-blur-sm shadow-sm">
-      <h3 class="text-lg font-bold font-heading text-heading mb-4 flex items-center gap-2">
-        <Icon name="tabler:tag" class="w-5 h-5 text-primary dark:text-blue-400" />
-        Popular Tags
-      </h3>
-      <div class="flex flex-wrap gap-2">
-        {tags.map((tag) => (
-          <a
-            href={getPermalink(tag.slug, 'tag')}
-            class="px-3 py-1 rounded-xl text-xs font-semibold bg-gray-50 hover:bg-primary hover:text-white dark:bg-slate-800/40 dark:text-slate-300 dark:hover:bg-blue-600 dark:hover:text-white border border-gray-100 dark:border-slate-800/60 transition-all duration-200"
-          >
-            {tag.title}
-          </a>
-        ))}
+  {
+    tags.length > 0 && (
+      <div class="p-6 rounded-2xl border border-gray-100 dark:border-slate-800 bg-white dark:bg-slate-900/50 backdrop-blur-sm shadow-sm">
+        <h3 class="text-lg font-bold font-heading text-heading mb-4 flex items-center gap-2">
+          <Icon name="tabler:tag" class="w-5 h-5 text-primary dark:text-blue-400" />
+          Popular Tags
+        </h3>
+        <div class="flex flex-wrap gap-2">
+          {tags.map((tag) => (
+            <a
+              href={getPermalink(tag.slug, 'tag')}
+              class="px-3 py-1 rounded-xl text-xs font-semibold bg-gray-50 hover:bg-primary hover:text-white dark:bg-slate-800/40 dark:text-slate-300 dark:hover:bg-blue-600 dark:hover:text-white border border-gray-100 dark:border-slate-800/60 transition-all duration-200"
+            >
+              {tag.title}
+            </a>
+          ))}
+        </div>
       </div>
-    </div>
-  )}
+    )
+  }
 </aside>
 
 {/* Search Index Script */}
-<script is:inline id="search-data" type="application/json" set:html={JSON.stringify(searchablePosts)}></script>
+<script is:inline id="search-data" type="application/json" set:html={JSON.stringify(searchablePosts)} />
 
 {/* Client Search Interactivity */}
 <script is:inline>

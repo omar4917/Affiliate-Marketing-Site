@@ -45,22 +45,24 @@ const metadata = {
       </p>
     </div>
 
-    {hostingProviders.map((provider) => (
-      <ProductReviewCard
-        title={provider.title}
-        image={provider.image}
-        rating={provider.rating}
-        price={provider.price}
-        badge={provider.winnerLabel}
-        ribbonColor={provider.ribbonColor as any}
-        description={provider.description}
-        specs={provider.specs}
-        pros={provider.pros}
-        cons={provider.cons}
-        affiliateUrl={provider.affiliateUrl}
-        ctaText={provider.ctaText}
-      />
-    ))}
+    {
+      hostingProviders.map((provider) => (
+        <ProductReviewCard
+          title={provider.title}
+          image={provider.image}
+          rating={provider.rating}
+          price={provider.price}
+          badge={provider.winnerLabel}
+          ribbonColor={provider.ribbonColor as 'primary' | 'secondary' | 'accent' | 'success' | 'warning'}
+          description={provider.description}
+          specs={provider.specs as unknown as Record<string, string>}
+          pros={provider.pros}
+          cons={provider.cons}
+          affiliateUrl={provider.affiliateUrl}
+          ctaText={provider.ctaText}
+        />
+      ))
+    }
   </section>
 
   {/* Call To Action */}

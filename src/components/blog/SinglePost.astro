@@ -43,7 +43,7 @@ const { post, url } = Astro.props;
             post.category && (
               <>
                 {' '}
-                ·   {' '}
+                ·{' '}
                 <a class="hover:underline inline-block" href={getPermalink(post.category.slug, 'category')}>
                   {post.category.title}
                 </a>
@@ -101,9 +101,15 @@ const { post, url } = Astro.props;
         >
           <slot />
         </div>
-        <div class="mt-8 pt-6 border-t border-gray-100 dark:border-slate-800 flex justify-between flex-col sm:flex-row gap-4">
+        <div
+          class="mt-8 pt-6 border-t border-gray-100 dark:border-slate-800 flex justify-between flex-col sm:flex-row gap-4"
+        >
           <PostTags tags={post.tags} class="mr-5 rtl:mr-0 rtl:ml-5" />
-          <SocialShare url={url} text={post.title} class="mt-5 sm:mt-1 align-middle text-gray-500 dark:text-slate-600" />
+          <SocialShare
+            url={url}
+            text={post.title}
+            class="mt-5 sm:mt-1 align-middle text-gray-500 dark:text-slate-600"
+          />
         </div>
       </div>
 
