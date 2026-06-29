@@ -23,6 +23,29 @@ posts.forEach((post) => {
 
 const totalCategories = categoriesSet.size;
 const totalTags = tagsSet.size;
+
+// Deterministic dynamic stats for demo preview
+const defaultChartData = [
+  { day: 'Mon', value: 1240, height: 'h-[120px]' },
+  { day: 'Tue', value: 1500, height: 'h-[150px]' },
+  { day: 'Wed', value: 940, height: 'h-[90px]' },
+  { day: 'Thu', value: 1820, height: 'h-[180px]' },
+  { day: 'Fri', value: 2100, height: 'h-[210px]' },
+  { day: 'Sat', value: 1410, height: 'h-[140px]' },
+  { day: 'Today', value: 2320, height: 'h-[230px]' },
+];
+
+const dynamicPages = [
+  { title: 'Homepage', path: '/', views: 1850 },
+  { title: 'Best Hosting (2026)', path: '/best-hosting', views: 1420 },
+  ...posts.map((post, idx) => ({
+    title: post.title,
+    path: `/${post.slug || post.id}`,
+    views: Math.max(120, 980 - idx * 150 + (post.title.length % 7) * 35),
+  })),
+]
+  .sort((a, b) => b.views - a.views)
+  .slice(0, 5);
 ---
 
 <Layout metadata={metadata}>
@@ -42,13 +65,32 @@ const totalTags = tagsSet.size;
       </div>
       <div class="flex gap-3">
         <a
-          href="/decapcms/"
+          href="/admin/"
           class="px-5 py-2.5 rounded-xl bg-primary hover:bg-primary-dark text-white dark:bg-blue-600 dark:hover:bg-blue-700 text-sm font-semibold transition flex items-center gap-2 shadow-md"
         >
           <Icon name="tabler:edit" class="w-4 h-4" />
           Decap CMS Editor
         </a>
       </div>
+    </div>
+
+    {/* GA Status Banner */}
+    <div
+      id="ga-status-banner"
+      class="mb-8 p-4 rounded-2xl border border-blue-100 bg-blue-50/50 dark:border-blue-900/20 dark:bg-blue-950/10 text-sm flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 transition-all"
+    >
+      <div class="flex items-center gap-3 text-blue-700 dark:text-blue-300">
+        <Icon name="tabler:info-circle" class="w-5 h-5 flex-shrink-0 text-blue-500" />
+        <span
+          >Currently showing simulated data. Connect Google Analytics (GA4) stream to view real-time traffic statistics.</span
+        >
+      </div>
+      <button
+        onclick="document.getElementById('ga-settings-modal').classList.remove('hidden')"
+        class="px-4 py-2 rounded-xl bg-primary hover:bg-primary-dark dark:bg-blue-600 dark:hover:bg-blue-700 text-white text-xs font-bold transition whitespace-nowrap shadow-sm"
+      >
+        Connect GA4 Stream
+      </button>
     </div>
 
     {/* Metric Overview Grid */}
@@ -118,91 +160,33 @@ const totalTags = tagsSet.size;
             Visitor Engagement (Last 7 Days)
           </h2>
           <span
-            class="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/30 px-2 py-0.5 rounded"
+            id="ga-live-indicator"
+            class="text-[10px] font-bold text-gray-500 bg-gray-100 dark:bg-slate-800 dark:text-gray-400 px-2 py-0.5 rounded"
           >
-            Live Stream
+            Demo Stream
           </span>
         </div>
 
-        {/* Dynamic Simulated Chart */}
+        {/* Dynamic Chart Container */}
         <div
+          id="chart-container"
           class="relative h-64 w-full flex items-end justify-between px-4 pb-6 border-b border-gray-100 dark:border-slate-800"
         >
-          <div class="flex flex-col items-center w-8 group">
-            <div
-              class="w-full bg-primary/20 dark:bg-blue-500/20 group-hover:bg-primary dark:group-hover:bg-blue-500 rounded-t-lg transition-all h-[120px] relative"
-            >
-              <span
-                class="absolute -top-7 left-1/2 -translate-x-1/2 text-[10px] font-bold bg-slate-900 text-white dark:bg-slate-800 px-1.5 py-0.5 rounded shadow opacity-0 group-hover:opacity-100 transition-opacity"
-                >1,240</span
-              >
-            </div>
-            <span class="text-[10px] text-muted font-bold mt-2">Mon</span>
-          </div>
-          <div class="flex flex-col items-center w-8 group">
-            <div
-              class="w-full bg-primary/20 dark:bg-blue-500/20 group-hover:bg-primary dark:group-hover:bg-blue-500 rounded-t-lg transition-all h-[150px] relative"
-            >
-              <span
-                class="absolute -top-7 left-1/2 -translate-x-1/2 text-[10px] font-bold bg-slate-900 text-white dark:bg-slate-800 px-1.5 py-0.5 rounded shadow opacity-0 group-hover:opacity-100 transition-opacity"
-                >1,500</span
-              >
-            </div>
-            <span class="text-[10px] text-muted font-bold mt-2">Tue</span>
-          </div>
-          <div class="flex flex-col items-center w-8 group">
-            <div
-              class="w-full bg-primary/20 dark:bg-blue-500/20 group-hover:bg-primary dark:group-hover:bg-blue-500 rounded-t-lg transition-all h-[90px] relative"
-            >
-              <span
-                class="absolute -top-7 left-1/2 -translate-x-1/2 text-[10px] font-bold bg-slate-900 text-white dark:bg-slate-800 px-1.5 py-0.5 rounded shadow opacity-0 group-hover:opacity-100 transition-opacity"
-                >940</span
-              >
-            </div>
-            <span class="text-[10px] text-muted font-bold mt-2">Wed</span>
-          </div>
-          <div class="flex flex-col items-center w-8 group">
-            <div
-              class="w-full bg-primary/20 dark:bg-blue-500/20 group-hover:bg-primary dark:group-hover:bg-blue-500 rounded-t-lg transition-all h-[180px] relative"
-            >
-              <span
-                class="absolute -top-7 left-1/2 -translate-x-1/2 text-[10px] font-bold bg-slate-900 text-white dark:bg-slate-800 px-1.5 py-0.5 rounded shadow opacity-0 group-hover:opacity-100 transition-opacity"
-                >1,820</span
-              >
-            </div>
-            <span class="text-[10px] text-muted font-bold mt-2">Thu</span>
-          </div>
-          <div class="flex flex-col items-center w-8 group">
-            <div
-              class="w-full bg-primary/20 dark:bg-blue-500/20 group-hover:bg-primary dark:group-hover:bg-blue-500 rounded-t-lg transition-all h-[210px] relative"
-            >
-              <span
-                class="absolute -top-7 left-1/2 -translate-x-1/2 text-[10px] font-bold bg-slate-900 text-white dark:bg-slate-800 px-1.5 py-0.5 rounded shadow opacity-0 group-hover:opacity-100 transition-opacity"
-                >2,100</span
-              >
-            </div>
-            <span class="text-[10px] text-muted font-bold mt-2">Fri</span>
-          </div>
-          <div class="flex flex-col items-center w-8 group">
-            <div
-              class="w-full bg-primary/20 dark:bg-blue-500/20 group-hover:bg-primary dark:group-hover:bg-blue-500 rounded-t-lg transition-all h-[140px] relative"
-            >
-              <span
-                class="absolute -top-7 left-1/2 -translate-x-1/2 text-[10px] font-bold bg-slate-900 text-white dark:bg-slate-800 px-1.5 py-0.5 rounded shadow opacity-0 group-hover:opacity-100 transition-opacity"
-                >1,410</span
-              >
-            </div>
-            <span class="text-[10px] text-muted font-bold mt-2">Sat</span>
-          </div>
-          <div class="flex flex-col items-center w-8 group">
-            <div class="w-full bg-primary dark:bg-blue-500 rounded-t-lg transition-all h-[230px] relative">
-              <span
-                class="absolute -top-7 left-1/2 -translate-x-1/2 text-[10px] font-bold bg-slate-900 text-white dark:bg-slate-800 px-1.5 py-0.5 rounded shadow opacity-100 transition-opacity"
-                >2,320</span
-              >
-            </div>
-            <span class="text-[10px] text-muted font-bold mt-2">Today</span>
-          </div>
+          {
+            defaultChartData.map((d) => (
+              <div class="flex flex-col items-center w-8 group">
+                <div
+                  class={`w-full bg-primary/20 dark:bg-blue-500/20 group-hover:bg-primary dark:group-hover:bg-blue-500 rounded-t-lg transition-all ${d.height} relative chart-bar`}
+                  data-val={d.value}
+                >
+                  <span class="absolute -top-7 left-1/2 -translate-x-1/2 text-[10px] font-bold bg-slate-900 text-white dark:bg-slate-800 px-1.5 py-0.5 rounded shadow opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap label-val">
+                    {d.value.toLocaleString()}
+                  </span>
+                </div>
+                <span class="text-[10px] text-muted font-bold mt-2">{d.day}</span>
+              </div>
+            ))
+          }
         </div>
       </div>
 
@@ -215,35 +199,294 @@ const totalTags = tagsSet.size;
             <Icon name="tabler:star" class="w-5 h-5 text-amber-500" />
             Top Performing Pages
           </h2>
-          <ul class="space-y-4">
-            <li class="flex justify-between items-center">
-              <div>
-                <span class="text-sm font-semibold text-page block">Hosting Reviews</span>
-                <code class="text-[10px] text-muted block">/best-hosting</code>
-              </div>
-              <span class="text-xs font-bold text-gray-500">1.2k views</span>
-            </li>
-            <li class="flex justify-between items-center">
-              <div>
-                <span class="text-sm font-semibold text-page block">AstroWind Setup Guide</span>
-                <code class="text-[10px] text-muted block">/get-started-website-...</code>
-              </div>
-              <span class="text-xs font-bold text-gray-500">890 views</span>
-            </li>
-            <li class="flex justify-between items-center">
-              <div>
-                <span class="text-sm font-semibold text-page block">Homepage</span>
-                <code class="text-[10px] text-muted block">/</code>
-              </div>
-              <span class="text-xs font-bold text-gray-500">760 views</span>
-            </li>
+          <ul id="top-pages-list" class="space-y-4">
+            {
+              dynamicPages.map((page) => (
+                <li class="flex justify-between items-center gap-4">
+                  <div class="min-w-0 flex-1">
+                    <span class="text-sm font-semibold text-page block truncate">{page.title}</span>
+                    <code class="text-[10px] text-muted block truncate">{page.path}</code>
+                  </div>
+                  <span class="text-xs font-bold text-gray-500 flex-shrink-0">{page.views.toLocaleString()} views</span>
+                </li>
+              ))
+            }
           </ul>
         </div>
 
-        <div class="mt-6 pt-4 border-t border-gray-100 dark:border-slate-800 text-center">
-          <span class="text-xs text-muted">Data synchronized directly with Google Analytics stream.</span>
+        <div
+          class="mt-6 pt-4 border-t border-gray-100 dark:border-slate-800 text-center flex flex-col items-center gap-1"
+        >
+          <span class="text-xs text-muted" id="ga-sync-time">Displaying dynamic internal site metrics.</span>
+          <button
+            onclick="document.getElementById('ga-settings-modal').classList.remove('hidden')"
+            class="text-[10px] text-primary hover:underline font-semibold dark:text-blue-400">Settings</button
+          >
         </div>
       </div>
     </div>
   </section>
+
+  {/* Settings Modal */}
+  <div
+    id="ga-settings-modal"
+    class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4"
+  >
+    <div
+      class="bg-white dark:bg-slate-900 rounded-2xl border border-gray-200 dark:border-slate-800 shadow-2xl max-w-md w-full p-6 relative"
+    >
+      <button
+        onclick="document.getElementById('ga-settings-modal').classList.add('hidden')"
+        class="absolute top-4 right-4 text-muted hover:text-page transition"
+      >
+        <Icon name="tabler:x" class="w-5 h-5" />
+      </button>
+      <h3 class="text-xl font-bold font-heading text-page mb-3 flex items-center gap-2">
+        <Icon name="tabler:brand-google" class="text-primary w-6 h-6" />
+        Link Google Analytics
+      </h3>
+      <p class="text-xs text-muted mb-6">
+        Sync live data directly to this dashboard. All credentials remain in your local browser storage.
+      </p>
+
+      <div class="space-y-4 mb-6">
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-muted mb-1.5">GA4 Property ID</label>
+          <input
+            type="text"
+            id="ga-property-id"
+            placeholder="e.g. 312345678"
+            class="w-full px-3 py-2 rounded-lg border border-gray-200 dark:border-slate-800 bg-transparent text-sm focus:outline-none focus:ring-2 focus:ring-primary text-page"
+          />
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-muted mb-1.5"
+            >Google OAuth Client ID</label
+          >
+          <input
+            type="text"
+            id="ga-client-id"
+            placeholder="e.g. 12345-abc.apps.googleusercontent.com"
+            class="w-full px-3 py-2 rounded-lg border border-gray-200 dark:border-slate-800 bg-transparent text-sm focus:outline-none focus:ring-2 focus:ring-primary text-page"
+          />
+        </div>
+      </div>
+
+      <div
+        class="bg-slate-50 dark:bg-slate-950 p-4 rounded-xl text-[10px] text-muted space-y-2 mb-6 border border-slate-100 dark:border-slate-850"
+      >
+        <p class="font-bold text-page">Setup Instructions:</p>
+        <ol class="list-decimal list-inside space-y-1">
+          <li>Locate your <b>Property ID</b> in GA4 Settings &gt; Property details.</li>
+          <li>Set up credentials in the Google Cloud Console with the <b>Google Analytics Data API</b> enabled.</li>
+          <li>
+            Add <code>{typeof window !== 'undefined' ? window.location.origin : ''}</code> to your app's authorized JavaScript
+            origins.
+          </li>
+        </ol>
+      </div>
+
+      <div class="flex gap-3 justify-end">
+        <button
+          onclick="document.getElementById('ga-settings-modal').classList.add('hidden')"
+          class="px-4 py-2 rounded-lg border border-gray-200 dark:border-slate-800 text-xs font-semibold hover:bg-slate-50 dark:hover:bg-slate-850 transition"
+          >Cancel</button
+        >
+        <button
+          id="ga-save-btn"
+          class="px-4 py-2 rounded-lg bg-primary hover:bg-primary-dark text-white text-xs font-semibold transition"
+          >Save & Sync</button
+        >
+      </div>
+    </div>
+  </div>
+
+  {/* Client Auth & API Scripts */}
+  <script is:inline src="https://accounts.google.com/gsi/client" defer></script>
+  <script is:inline>
+    // Load config from localStorage
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedPropertyId = localStorage.getItem('ga_property_id') || '';
+      const savedClientId = localStorage.getItem('ga_client_id') || '';
+      const isConnected = localStorage.getItem('ga_connected') === 'true';
+
+      const propertyInput = document.getElementById('ga-property-id');
+      const clientInput = document.getElementById('ga-client-id');
+      if (propertyInput) propertyInput.value = savedPropertyId;
+      if (clientInput) clientInput.value = savedClientId;
+
+      if (isConnected) {
+        updateUIConnected();
+        fetchLiveReports();
+      }
+
+      document.getElementById('ga-save-btn')?.addEventListener('click', () => {
+        const propId = document.getElementById('ga-property-id').value.trim();
+        const clientVal = document.getElementById('ga-client-id').value.trim();
+        if (!propId || !clientVal) {
+          alert('Please fill in both Property ID and Client ID.');
+          return;
+        }
+
+        localStorage.setItem('ga_property_id', propId);
+        localStorage.setItem('ga_client_id', clientVal);
+        localStorage.setItem('ga_connected', 'true');
+
+        document.getElementById('ga-settings-modal').classList.add('hidden');
+        updateUIConnected();
+        authenticateGoogle();
+      });
+    });
+
+    function updateUIConnected() {
+      const banner = document.getElementById('ga-status-banner');
+      if (banner) {
+        banner.className =
+          'mb-8 p-4 rounded-2xl border border-emerald-100 bg-emerald-50/50 dark:border-emerald-900/20 dark:bg-emerald-950/10 text-sm flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 transition-all';
+        banner.innerHTML = `
+          <div class="flex items-center gap-3 text-emerald-700 dark:text-emerald-300">
+            <svg class="w-5 h-5 flex-shrink-0 text-emerald-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <span>Google Analytics is active. Direct live stream connection established.</span>
+          </div>
+          <div class="flex gap-2">
+            <button onclick="document.getElementById('ga-settings-modal').classList.remove('hidden')" class="px-3.5 py-2 rounded-xl border border-emerald-200 dark:border-emerald-800 text-xs font-bold hover:bg-emerald-100 dark:hover:bg-emerald-900/30 transition whitespace-nowrap">Settings</button>
+            <button onclick="disconnectGA()" class="px-3.5 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-bold transition whitespace-nowrap">Disconnect</button>
+          </div>
+        `;
+      }
+
+      const indicator = document.getElementById('ga-live-indicator');
+      if (indicator) {
+        indicator.className =
+          'text-[10px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/30 px-2 py-0.5 rounded';
+        indicator.innerText = 'Live Stream';
+      }
+    }
+
+    function disconnectGA() {
+      localStorage.removeItem('ga_connected');
+      localStorage.removeItem('ga_access_token');
+      location.reload();
+    }
+    window.disconnectGA = disconnectGA;
+
+    function authenticateGoogle() {
+      const clientId = localStorage.getItem('ga_client_id');
+      if (!clientId) return;
+
+      try {
+        const client = google.accounts.oauth2.initTokenClient({
+          client_id: clientId,
+          scope: 'https://www.googleapis.com/auth/analytics.readonly',
+          callback: (tokenResponse) => {
+            if (tokenResponse && tokenResponse.access_token) {
+              localStorage.setItem('ga_access_token', tokenResponse.access_token);
+              fetchLiveReports();
+            }
+          },
+        });
+        client.requestAccessToken();
+      } catch (err) {
+        console.error('Google Auth Init Failed', err);
+        alert('Failed to initialize Google Authentication. Please check your Client ID.');
+      }
+    }
+
+    async function fetchLiveReports() {
+      const token = localStorage.getItem('ga_access_token');
+      const propertyId = localStorage.getItem('ga_property_id');
+      if (!token || !propertyId) return;
+
+      try {
+        // Fetch 7 Day Active Users report
+        const engagementRes = await fetch(
+          `https://analyticsdata.googleapis.com/v1beta/properties/${propertyId}:runReport`,
+          {
+            method: 'POST',
+            headers: {
+              Authorization: `Bearer ${token}`,
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              dateRanges: [{ startDate: '6daysAgo', endDate: 'today' }],
+              metrics: [{ name: 'activeUsers' }],
+              dimensions: [{ name: 'dayOfWeek' }], // We retrieve day index
+            }),
+          }
+        );
+
+        if (engagementRes.status === 401) {
+          // Token expired, re-auth
+          authenticateGoogle();
+          return;
+        }
+
+        const engagementData = await engagementRes.json();
+
+        // Update Chart
+        if (engagementData.rows) {
+          // GA returns dayOfWeek as digits or day index. Let's map it based on order
+          const bars = document.querySelectorAll('.chart-bar');
+          const maxVal = Math.max(...engagementData.rows.map((r) => parseInt(r.metricValues[0].value) || 1));
+
+          engagementData.rows.forEach((row, index) => {
+            if (bars[index]) {
+              const val = parseInt(row.metricValues[0].value) || 0;
+              const heightPct = Math.round((val / maxVal) * 230);
+              bars[index].style.height = `${heightPct}px`;
+              const label = bars[index].querySelector('.label-val');
+              if (label) label.innerText = val.toLocaleString();
+            }
+          });
+        }
+
+        // Fetch Top Performing Pages report
+        const pagesRes = await fetch(`https://analyticsdata.googleapis.com/v1beta/properties/${propertyId}:runReport`, {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            dateRanges: [{ startDate: '30daysAgo', endDate: 'today' }],
+            metrics: [{ name: 'screenPageViews' }],
+            dimensions: [{ name: 'pageTitle' }, { name: 'pagePath' }],
+            limit: 5,
+          }),
+        });
+
+        const pagesData = await pagesRes.json();
+
+        // Update Top Pages list
+        if (pagesData.rows) {
+          const listContainer = document.getElementById('top-pages-list');
+          if (listContainer) {
+            listContainer.innerHTML = pagesData.rows
+              .map((row) => {
+                const title = row.dimensionValues[0].value || 'Untitled Page';
+                const path = row.dimensionValues[1].value || '/';
+                const views = parseInt(row.metricValues[0].value) || 0;
+                return `
+                <li class="flex justify-between items-center gap-4">
+                  <div class="min-w-0 flex-1">
+                    <span class="text-sm font-semibold text-page block truncate">${title}</span>
+                    <code class="text-[10px] text-muted block truncate">${path}</code>
+                  </div>
+                  <span class="text-xs font-bold text-gray-500 flex-shrink-0">${views.toLocaleString()} views</span>
+                </li>
+              `;
+              })
+              .join('');
+          }
+        }
+
+        const syncLabel = document.getElementById('ga-sync-time');
+        if (syncLabel) {
+          syncLabel.innerText = `Data synchronized directly with Google Analytics GA4.`;
+        }
+      } catch (err) {
+        console.error('Failed fetching GA4 report data', err);
+      }
+    }
+  </script>
 </Layout>
