@@ -2,6 +2,8 @@ backend:
   name: github
   repo: omar4917/Affiliate-Marketing-Site
   branch: main
+  base_url: https://reviews.synchrove.com
+  auth_endpoint: api/auth
 
 local_backend: true
 
