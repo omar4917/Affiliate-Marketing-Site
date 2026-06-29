@@ -1,5 +1,6 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: omar4917/Affiliate-Marketing-Site
   branch: main
 
 local_backend: true
