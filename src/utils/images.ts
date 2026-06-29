@@ -29,16 +29,35 @@ export const findImage = async (
   imagePath?: string | ImageMetadata | null
 ): Promise<string | ImageMetadata | undefined | null> => {
   if (typeof imagePath !== 'string') return imagePath;
-  if (imagePath.startsWith('http://') || imagePath.startsWith('https://') || imagePath.startsWith('/'))
+  if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) return imagePath;
+
+  // Normalize path format for local assets
+  let normalizedPath = imagePath;
+  if (normalizedPath.startsWith('/src/assets/images/')) {
+    normalizedPath = normalizedPath.replace('/src/', '~/');
+  } else if (normalizedPath.startsWith('src/assets/images/')) {
+    normalizedPath = normalizedPath.replace('src/', '~/');
+  } else if (normalizedPath.startsWith('/assets/images/')) {
+    normalizedPath = '~/assets/images/' + normalizedPath.substring('/assets/images/'.length);
+  }
+
+  if (normalizedPath.startsWith('~/assets/images/')) {
+    const images = loadLocalImages();
+    const key = normalizedPath.replace('~/', '/src/');
+    const loader = images[key];
+
+    if (typeof loader === 'function') {
+      return ((await loader()) as { default: ImageMetadata }).default;
+    }
+  }
+
+  // If it's a valid root-relative path (starting with /), return it as-is
+  if (imagePath.startsWith('/')) {
     return imagePath;
-  if (!imagePath.startsWith('~/assets/images')) return imagePath;
+  }
 
-  const images = loadLocalImages();
-  const key = imagePath.replace('~/', '/src/');
-  const loader = images[key];
-
-  if (typeof loader !== 'function') return null;
-  return ((await loader()) as { default: ImageMetadata }).default;
+  // Otherwise, return null to prevent crashing the build with invalid file paths
+  return null;
 };
 
 const OG_WIDTH = 1200;
