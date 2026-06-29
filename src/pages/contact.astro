@@ -5,19 +5,20 @@ import ContactUs from '~/components/widgets/Contact.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 
 const metadata = {
-  title: 'Contact',
+  title: 'Contact Synchrove',
+  description: 'Reach out to Synchrove with questions, suggestions, feedback, or partnership opportunities.',
 };
 ---
 
 <Layout metadata={metadata}>
-  <!-- HeroText Widget ******************* -->
-
+  {/* Header */}
   <HeroText tagline="Contact" title="Let's Connect!" />
 
+  {/* Contact Form */}
   <ContactUs
     id="form"
     title="Drop us a message today!"
-    subtitle="For quicker answers, explore our FAQs section. You may find the solution you're looking  for right there! If not, our support team is delighted to help you."
+    subtitle="Have a question about our hosting reviews or want us to benchmark a specific developer tool? Send us a message and we'll get back to you shortly."
     inputs={[
       {
         type: 'text',
@@ -35,44 +36,29 @@ const metadata = {
     }}
     disclaimer={{
       label:
-        'By submitting this contact form, you acknowledge and agree to the collection of your personal information.',
+        'By submitting this contact form, you agree to the collection of the entered details for contact purposes.',
     }}
-    description="Our support team typically responds within 24 business hours."
+    description="We typically respond to inquiries within 24 business hours."
   />
 
-  <!-- Features2 Widget ************** -->
-
+  {/* Contact Info Cards */}
   <Features2
-    title="We are here to help!"
+    title="Ways to Reach Us"
     items={[
       {
-        title: 'General support',
-        description: `Chat with us for inquiries related to account management, website navigation, payment issues, accessing purchased templates or general questions about the website's functionality.`,
-      },
-      {
-        title: 'Contact sales',
-        description:
-          'Chat with us for questions about purchases, customization options, licensing for commercial use, inquiries about specific template, etc.',
-      },
-      {
-        title: 'Technical support',
-        description:
-          'Chat with us when facing issues like template installation, problems editing difficulties, compatibility issues with software or download errors, or other technical challenges related to using the templates.',
-      },
-      {
-        title: 'Phone',
-        description: '+1 (234) 567-890',
-        icon: 'tabler:headset',
-      },
-      {
-        title: 'Email',
-        description: 'contact@support.com',
+        title: 'General Inquiries',
+        description: 'For general questions about the website, articles, or feedback, email us directly.',
         icon: 'tabler:mail',
       },
       {
-        title: 'Location',
-        description: '1234 Lorem Ipsum St, 12345, Miami, EEUU',
-        icon: 'tabler:map-pin',
+        title: 'Email Address',
+        description: 'contact@synchrove.com',
+        icon: 'tabler:mail-opened',
+      },
+      {
+        title: 'Partnerships',
+        description: 'For sponsorship requests or product review inquiries, please include "Partnership" in the subject.',
+        icon: 'tabler:briefcase',
       },
     ]}
   />
