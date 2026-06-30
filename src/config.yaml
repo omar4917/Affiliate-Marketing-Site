@@ -5,6 +5,7 @@ site:
   trailingSlash: false
 
   googleSiteVerificationId: ''
+  impactSiteVerificationId: '78210222-a6b8-4250-93fa-38ddb422d687'
 
 # Default SEO metadata
 metadata:

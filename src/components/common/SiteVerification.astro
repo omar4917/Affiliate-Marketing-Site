@@ -3,3 +3,11 @@ import { SITE } from 'astrowind:config';
 ---
 
 {SITE.googleSiteVerificationId && <meta name="google-site-verification" content={SITE.googleSiteVerificationId} />}
+
+{SITE.impactSiteVerificationId && <meta name="Impact-Site-Verification" content={SITE.impactSiteVerificationId} />}
+{SITE.impactSiteVerificationId && <meta name="impact-site-verification" content={SITE.impactSiteVerificationId} />}
+{
+  SITE.impactSiteVerificationId && (
+    <Fragment set:html={`<!-- Impact-Site-Verification: ${SITE.impactSiteVerificationId} -->`} />
+  )
+}
