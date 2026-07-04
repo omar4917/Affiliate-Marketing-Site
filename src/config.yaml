@@ -1,6 +1,6 @@
 site:
   name: Football Gear & Tactics
-  site: 'http://localhost:4321'
+  site: 'https://reviews.synchrove.com'
   base: '/'
   trailingSlash: false
 

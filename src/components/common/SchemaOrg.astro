@@ -1,0 +1,147 @@
+---
+/**
+ * SchemaOrg.astro — Injects JSON-LD structured data into the <head>.
+ *
+ * Generates:
+ *   • WebSite + Organization schema on every page
+ *   • Article / BlogPosting schema when article metadata is provided
+ *   • BreadcrumbList schema for navigation context
+ */
+import { SITE, METADATA } from 'astrowind:config';
+
+import type { MetaData } from '~/types';
+
+export interface Props {
+  metadata?: MetaData & {
+    articleDetails?: {
+      publishDate?: Date | string;
+      updateDate?: Date | string;
+      author?: string;
+    };
+  };
+}
+
+const { metadata = {} } = Astro.props;
+
+const isArticle = metadata.openGraph?.type === 'article';
+const articleDetails = (metadata as any).articleDetails || {};
+
+const articleData = isArticle
+  ? {
+      title: metadata.title,
+      description: metadata.description,
+      publishDate: articleDetails.publishDate,
+      updateDate: articleDetails.updateDate,
+      author: articleDetails.author,
+      image: metadata.openGraph?.images?.[0]?.url,
+      url: metadata.canonical,
+    }
+  : null;
+
+const siteUrl = SITE?.site ? new URL(SITE.site).origin : Astro.site?.origin || '';
+const siteName = SITE?.name || METADATA?.title?.default || '';
+const siteDescription = METADATA?.description || '';
+const currentUrl = new URL(Astro.url.pathname, siteUrl).href;
+
+// ── Organisation ──────────────────────────────────────
+const organizationSchema = {
+  '@type': 'Organization',
+  '@id': `${siteUrl}/#organization`,
+  name: 'Synchrove',
+  url: 'https://synchrove.com',
+  logo: {
+    '@type': 'ImageObject',
+    url: `${siteUrl}/favicon.ico`,
+  },
+  sameAs: [
+    'https://www.linkedin.com/in/omarkhayam4917/',
+  ],
+};
+
+// ── WebSite ───────────────────────────────────────────
+const websiteSchema = {
+  '@type': 'WebSite',
+  '@id': `${siteUrl}/#website`,
+  url: siteUrl,
+  name: siteName,
+  description: siteDescription,
+  publisher: { '@id': `${siteUrl}/#organization` },
+  inLanguage: 'en',
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: `${siteUrl}/?s={search_term_string}`,
+    },
+    'query-input': 'required name=search_term_string',
+  },
+};
+
+// ── BreadcrumbList ────────────────────────────────────
+const pathSegments = Astro.url.pathname.split('/').filter(Boolean);
+const breadcrumbItems = [
+  {
+    '@type': 'ListItem',
+    position: 1,
+    name: 'Home',
+    item: siteUrl,
+  },
+  ...pathSegments.map((segment, index) => ({
+    '@type': 'ListItem',
+    position: index + 2,
+    name: segment
+      .replace(/-/g, ' ')
+      .replace(/\b\w/g, (c: string) => c.toUpperCase()),
+    item: `${siteUrl}/${pathSegments.slice(0, index + 1).join('/')}`,
+  })),
+];
+
+const breadcrumbSchema = {
+  '@type': 'BreadcrumbList',
+  itemListElement: breadcrumbItems,
+};
+
+// ── Article / BlogPosting ────────────────────────────
+let articleSchema = null;
+if (isArticle && articleData) {
+  articleSchema = {
+    '@type': 'BlogPosting',
+    '@id': `${articleData.url || currentUrl}#article`,
+    headline: articleData.title || '',
+    description: articleData.description || '',
+    datePublished: articleData.publishDate
+      ? new Date(articleData.publishDate).toISOString()
+      : undefined,
+    dateModified: articleData.updateDate
+      ? new Date(articleData.updateDate).toISOString()
+      : articleData.publishDate
+        ? new Date(articleData.publishDate).toISOString()
+        : undefined,
+    author: {
+      '@type': 'Person',
+      name: articleData.author || siteName,
+    },
+    publisher: { '@id': `${siteUrl}/#organization` },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': articleData.url || currentUrl,
+    },
+    isPartOf: { '@id': `${siteUrl}/#website` },
+    inLanguage: 'en',
+    ...(articleData.image ? { image: articleData.image } : {}),
+  };
+}
+
+// ── Graph ─────────────────────────────────────────────
+const graph = [organizationSchema, websiteSchema, breadcrumbSchema];
+if (articleSchema) {
+  graph.push(articleSchema);
+}
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': graph,
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

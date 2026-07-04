@@ -11,7 +11,7 @@ tags:
   - analysis
   - tools
 metadata:
-  canonical: https://affiliatemarketingsite.com/useful-resources-for-football-coaches
+  canonical: https://reviews.synchrove.com/useful-resources-for-football-coaches
 ---
 
 Modern coaching requires more than just a whistle and cones. To develop players and out-tactics opponents, coaches and analysts need access to quality data, tactical software, and high-quality educational materials. 
