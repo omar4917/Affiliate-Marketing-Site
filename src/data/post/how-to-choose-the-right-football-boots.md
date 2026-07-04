@@ -10,8 +10,6 @@ tags:
   - gear
   - equipment
   - football
-metadata:
-  canonical: https://reviews.synchrove.com/how-to-choose-the-right-football-boots
 ---
 
 Choosing the right pair of football boots is one of the most critical decisions a player can make. The wrong choice won't just hurt your game—it can also lead to severe joint, knee, or ankle injuries. 

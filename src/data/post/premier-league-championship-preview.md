@@ -10,8 +10,6 @@ tags:
   - epl
   - predictions
   - football
-metadata:
-  canonical: https://reviews.synchrove.com/premier-league-championship-preview
 ---
 
 The Premier League remains the most watched and competitive domestic football league in the world. As we approach the kick-off of the new season, it’s time to analyze who has the depth, talent, and tactical systems to go all the way, and who might shock the establishment.

@@ -2,7 +2,7 @@ site:
   name: Football Gear & Tactics
   site: 'https://reviews.synchrove.com'
   base: '/'
-  trailingSlash: false
+  trailingSlash: true
 
   googleSiteVerificationId: ''
   impactSiteVerificationId: '78210222-a6b8-4250-93fa-38ddb422d687'
