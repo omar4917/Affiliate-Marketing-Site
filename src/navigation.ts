@@ -10,8 +10,8 @@ export const headerData = {
       text: 'Reviews',
       links: [
         {
-          text: 'Best Hosting (2026)',
-          href: getPermalink('/best-hosting'),
+          text: 'Best Boots (2026)',
+          href: getPermalink('/best-boots'),
         },
       ],
     },
@@ -35,7 +35,7 @@ export const footerData = {
   links: [
     {
       title: 'Reviews',
-      links: [{ text: 'Best Hosting (2026)', href: getPermalink('/best-hosting') }],
+      links: [{ text: 'Best Boots (2026)', href: getPermalink('/best-boots') }],
     },
     {
       title: 'Blog',
@@ -60,6 +60,6 @@ export const footerData = {
     { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },
   ],
   footNote: `
-    © 2026 Affiliate Reviews · All rights reserved.
+    © 2026 Football Gear & Tactics · All rights reserved.
   `,
 };

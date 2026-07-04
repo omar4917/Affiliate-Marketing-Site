@@ -1,5 +1,5 @@
 site:
-  name: Affiliate Reviews
+  name: Football Gear & Tactics
   site: 'http://localhost:4321'
   base: '/'
   trailingSlash: false
@@ -10,14 +10,14 @@ site:
 # Default SEO metadata
 metadata:
   title:
-    default: Affiliate Reviews
-    template: '%s — Affiliate Reviews'
-  description: '🚀 Compare, review, and find the best developer tools, hosting plans, and SaaS services.'
+    default: Football Gear & Tactics
+    template: '%s — Football Gear & Tactics'
+  description: '⚽ Read in-depth football tactics analysis, training drill guides, and honest equipment reviews.'
   robots:
     index: true
     follow: true
   openGraph:
-    site_name: Affiliate Reviews
+    site_name: Football Gear & Tactics
     images:
       - url: '~/assets/images/default.png'
         width: 1200

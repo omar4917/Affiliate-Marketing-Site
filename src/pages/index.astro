@@ -9,7 +9,7 @@ import CallToAction from '~/components/widgets/CallToAction.astro';
 import Content from '~/components/widgets/Content.astro';
 
 const metadata = {
-  title: 'Affiliate Reviews — Honest Reviews & Comparisons for Developers',
+  title: 'Football Gear & Tactics — In-Depth Reviews & Analysis',
   ignoreTitleTemplate: true,
 };
 ---
@@ -21,27 +21,27 @@ const metadata = {
     actions={[
       {
         variant: 'primary',
-        text: 'Browse Reviews',
+        text: 'Browse Articles',
         href: '/blog',
         icon: 'tabler:search',
       },
       { text: 'How We Review', href: '#why-trust-us' },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2072&q=80',
-      alt: 'Developer workspace with code on screen',
+      src: 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1650&q=80',
+      alt: 'Football field stadium',
     }}
   >
     <Fragment slot="title">
-      Honest Reviews &<br class="hidden md:inline" /><span class="text-accent dark:text-white"> Developer-First</span> Comparisons
+      In-Depth Reviews &<br class="hidden md:inline" /><span class="text-accent dark:text-white"> Football-First</span> Analysis
     </Fragment>
 
     <Fragment slot="subtitle">
       <span class="hidden sm:inline">
-        We test and compare dev tools, SaaS products, and digital services so you don't have to.
+        We test and compare football boots, training gear, and break down professional tactics so you can elevate your game.
       </span>
-      <span class="block mb-1 sm:hidden font-bold text-blue-600">Unbiased product reviews.</span>
-      Find the best tools and services for your projects — backed by real testing and hands-on experience.
+      <span class="block mb-1 sm:hidden font-bold text-blue-600">Unbiased football reviews.</span>
+      Find the best gear and training strategies — backed by real on-pitch testing.
     </Fragment>
   </Hero>
 
@@ -50,37 +50,36 @@ const metadata = {
   <Content
     isReversed
     tagline="How It Works"
-    title="We Do the Research, You Make the Choice"
+    title="We Do the Pitch Work, You Make the Choice"
     items={[
       {
-        title: 'In-Depth Testing',
+        title: 'On-Pitch Testing',
         description:
-          'Every product is tested hands-on with real-world use cases — not just spec sheets and marketing claims.',
+          'Every pair of boots and piece of training gear is tested hands-on in real training sessions and matches.',
       },
       {
         title: 'Side-by-Side Comparisons',
         description:
-          'We put competing products head-to-head so you can see exactly how they stack up on price, features, and performance.',
+          'We put competing gear head-to-head so you can see exactly how they compare on durability, weight, comfort, and price.',
       },
       {
-        title: 'No Sponsored Rankings',
-        description: 'Our reviews are never pay-to-play. Products earn their ranking through merit, not ad spend.',
+        title: 'Unbiased Reviews',
+        description: 'Our reviews are never sponsored. Products earn their rankings purely through performance.',
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2015&q=80',
-      alt: 'Analytics dashboard on laptop',
+      src: 'https://images.unsplash.com/photo-1518063319789-7217e6706b04?auto=format&fit=crop&w=1650&q=80',
+      alt: 'Football boot on turf field',
     }}
     callToAction={{
-      text: 'Browse All Reviews',
+      text: 'Browse All Articles',
       href: '/blog',
       icon: 'tabler:arrow-right',
     }}
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Reviews You Can Trust</h3>
-      We spend hours testing so you can make informed decisions in minutes. Every review includes pricing breakdowns, pros
-      & cons, and our honest verdict.
+      We spend hours testing on the field so you can make informed decisions in minutes. Every review includes pros & cons, fit guides, and our honest verdict.
     </Fragment>
 
     <Fragment slot="bg">
@@ -93,43 +92,43 @@ const metadata = {
   <Features
     id="why-trust-us"
     tagline="Why Trust Us"
-    title="How We Review Products"
-    subtitle="Every review follows a transparent, developer-focused methodology. No sponsored rankings — just honest analysis."
+    title="How We Review Gear & Tactics"
+    subtitle="Every article follows a transparent, athlete-focused methodology. No sponsored rankings — just honest analysis."
     items={[
       {
-        title: 'Hands-On Testing',
+        title: 'On-Pitch Testing',
         description:
-          'We deploy real projects on every platform we review, measuring build times, response latency, and developer experience firsthand.',
-        icon: 'tabler:code',
+          'We wear every boot and use every accessory in real sessions, measuring durability, traction, comfort, and performance.',
+        icon: 'tabler:run',
       },
       {
         title: 'Performance Benchmarks',
         description:
-          'Standardized tests for TTFB, uptime, CDN coverage, and cold-start times — all with verifiable data.',
+          'Standardized tests for stud pressure, weight, lock-down, and agility response.',
         icon: 'tabler:chart-bar',
       },
       {
         title: 'Transparent Scoring',
         description:
-          'Our rating system weighs performance, pricing, ease of use, and support — with the full breakdown shown for every product.',
+          'Our rating system weighs comfort, durability, price, and technology — showing the full breakdown for every item.',
         icon: 'tabler:star',
       },
       {
-        title: 'Updated Regularly',
+        title: 'Season-by-Season Updates',
         description:
-          'Hosting platforms change fast. We re-test and update our reviews quarterly to keep recommendations current.',
+          'Football boots and gear models change fast. We re-test and update our reviews to keep recommendations current.',
         icon: 'tabler:refresh',
       },
       {
-        title: 'No Pay-to-Play Rankings',
+        title: 'No Sponsored Rankings',
         description:
           'Affiliate commissions never influence our rankings. Products earn their spot through merit, not sponsorship deals.',
         icon: 'tabler:shield-check',
       },
       {
-        title: 'Community Feedback',
+        title: 'Player Feedback',
         description:
-          'We factor in real user experiences and community sentiment alongside our own testing to give a complete picture.',
+          'We factor in opinions from players across different skill levels and pitch roles to provide a complete picture.',
         icon: 'tabler:users',
       },
     ]}
@@ -139,46 +138,36 @@ const metadata = {
 
   <BlogLatestPosts
     title="Latest from the Blog"
-    information="Stay up to date with our latest tutorials, comparisons, and industry insights for developers and makers."
+    information="Stay up to date with our latest tactics breakdowns, boot reviews, and coaching resources."
   />
 
   <!-- FAQs Widget ******************* -->
 
   <FAQs
     title="Frequently Asked Questions"
-    subtitle="Common questions about our reviews, methodology, and how we make recommendations."
+    subtitle="Common questions about our gear reviews, tactical analysis, and how we test."
     tagline="FAQs"
     classes={{ container: 'max-w-6xl' }}
     items={[
       {
-        title: 'How do you make money from this site?',
+        title: 'How do you test football gear?',
         description:
-          'We earn commissions through affiliate links when you sign up for a product we recommend. This never influences our rankings — products are ranked purely on merit. We clearly disclose affiliate relationships on every review page.',
+          'We wear and test boots on different ground types (FG, SG, AG, TF) to measure traction, fit, durability, and comfort under match conditions.',
       },
       {
-        title: 'How do you test products?',
+        title: 'Are your tactical analyses based on real data?',
         description:
-          'We use every product hands-on for real projects before reviewing it. We evaluate features, pricing, ease of use, documentation, and support quality — then compare it against top alternatives in the same category.',
+          'Yes. We use match video footage, passing networks, heatmaps, and statistical metrics to break down professional team systems and strategies.',
       },
       {
         title: 'How often are reviews updated?',
         description:
-          'We aim to update major comparison pages quarterly and whenever a platform makes significant changes to their pricing, features, or infrastructure. Each review page shows the last-updated date.',
+          'We update our recommendations quarterly and when major brands launch new boot silos or update existing models.',
       },
       {
-        title: 'Can I suggest a product for review?',
+        title: 'How do you monetize this site?',
         description:
-          'Absolutely! We welcome suggestions from the community. Reach out via our Contact page and let us know which tool or service you would like us to evaluate.',
-      },
-      {
-        title: 'Do you accept sponsored reviews?',
-        description:
-          'No. All reviews are independently conducted. We may earn affiliate commissions, but no company can pay for a higher ranking or a guaranteed positive review.',
-      },
-      {
-        title: 'Where do I start?',
-        description:
-          'Head to our Blog to browse the latest reviews and comparisons. Each article includes a clear verdict and recommendation so you can quickly find the right product for your needs.',
+          'We earn affiliate commissions when you purchase gear through our links. This comes at no extra cost to you and helps support our testing efforts.',
       },
     ]}
   />
@@ -189,18 +178,18 @@ const metadata = {
     actions={[
       {
         variant: 'primary',
-        text: 'Explore Reviews',
+        text: 'Explore Blog',
         href: '/blog',
         icon: 'tabler:arrow-right',
       },
     ]}
   >
     <Fragment slot="title">
-      Find the Right Tools<br class="block sm:hidden" /><span class="sm:whitespace-nowrap"> for Your Stack</span>
+      Elevate Your Game<br class="block sm:hidden" /><span class="sm:whitespace-nowrap"> Today</span>
     </Fragment>
 
     <Fragment slot="subtitle">
-      Stop guessing. Read our in-depth comparisons and choose the best tools and services for your projects.
+      Stop guessing. Read our in-depth guides and choose the best gear and tactical setups for your team.
     </Fragment>
   </CallToAction>
 </Layout>
