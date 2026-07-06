@@ -7,8 +7,8 @@ backend:
 
 local_backend: true
 
-media_folder: 'src/assets/images'
-public_folder: '/_astro'
+media_folder: 'public/images/blog-post-photos'
+public_folder: '/images/blog-post-photos'
 
 collections:
   - name: 'post'
