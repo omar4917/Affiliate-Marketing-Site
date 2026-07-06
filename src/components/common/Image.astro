@@ -68,6 +68,11 @@ const isCdnUrl =
   (resolved.startsWith('http://') || resolved.startsWith('https://')) &&
   parseUrl(resolved) !== undefined;
 
+const isPublicAsset =
+  typeof resolved === 'string' &&
+  resolved.startsWith('/') &&
+  !resolved.startsWith('//');
+
 // Infer missing dimension(s) from ESM-imported ImageMetadata. If only one of
 // width/height is provided, derive the other from the source aspect ratio.
 if (resolved && typeof resolved === 'object' && 'width' in resolved && 'height' in resolved) {
@@ -166,6 +171,7 @@ const astroImageProps = {
   widths,
   format,
   style: finalStyle,
+  inferSize: typeof resolved === 'string' && !h ? true : undefined,
 } as unknown as Parameters<typeof AstroImage>[0];
 ---
 
@@ -179,6 +185,15 @@ const astroImageProps = {
       alt={alt}
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
+      {...rest}
+      style={finalStyle}
+    />
+  ) : isPublicAsset ? (
+    <img
+      src={resolved as string}
+      width={w}
+      height={h}
+      alt={alt}
       {...rest}
       style={finalStyle}
     />
