@@ -3,7 +3,7 @@ publishDate: 2026-07-05T00:00:00Z
 author: Omar Khayam
 title: "The Blue Sharks' Miracle: How Cabo Verde Shocked the World"
 excerpt: "From a nation of half a million to pushing world champions Argentina to the brink, discover the diaspora strategy and tactical organization behind Cabo Verde's historic 2026 World Cup run."
-image: https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1650&q=80
+image: https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=1650&q=80
 category: Analysis
 tags:
   - world-cup
