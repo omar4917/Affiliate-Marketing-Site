@@ -10,7 +10,9 @@ tags:
   - cabo-verde
   - underdogs
   - football
-image: https://2mc83gcpi8.ucarecd.net/67854cc9-7088-4a00-a04b-37d33bf62a23/-/crop/399x418/0,19/-/preview/
+image: https://2mc83gcpi8.ucarecd.net/1197d2ae-7c53-4b21-9362-08f3e87e3adc/-/crop/399x352/0,26/-/preview/
+imageAlt: Messi vs Vozinha World Cup 2026 Round of 16
+imageTitle: Messi vs Vozinha World Cup 2026 Round of 16
 publishDate: 2026-07-05T00:00:00.000Z
 author: Omar Khayam
 ---
