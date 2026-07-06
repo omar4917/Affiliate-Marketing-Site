@@ -146,6 +146,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
                 href={getAsset('/rss.xml')}
               >
                 <Icon name="tabler:rss" class="w-5 h-5" />
+                <span class="sr-only">RSS Feed</span>
               </a>
             )
           }

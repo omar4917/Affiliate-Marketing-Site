@@ -87,6 +87,7 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
                 >
                   {icon && <Icon name={icon} class="w-5 h-5" />}
                   <Fragment set:html={text} />
+                  {ariaLabel && <span class="sr-only">{ariaLabel}</span>}
                 </a>
               </li>
             ))}
