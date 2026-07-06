@@ -10,7 +10,7 @@ tags:
   - cabo-verde
   - underdogs
   - football
-image: https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=1650&q=80
+image: .
 publishDate: 2026-07-05T00:00:00.000Z
 author: Omar Khayam
 ---
@@ -46,4 +46,4 @@ Cabo Verde’s World Cup exit was heartbreaking, but their performance secured a
 
 By converting on-pitch success into long-term infrastructure, the Blue Sharks have built a sustainable foundation to remain a force in African football for years to come.
 
-![Argentina-v-Cabo-Verde-Round-of-32-FIFA-World-Cup-2026](/images/blog-post-photos/argentina-v-cabo-verde-round-of-32-fifa-world-cup-2026.avif)
+![Argentina-v-Cabo-Verde-Round-of-32-FIFA-World-Cup-2026](/images/blog-post-photos/argentina-v-cabo-verde-round-of-32-fifa-world-cup-2026.avif "Dance of the The Blue Sharks")
