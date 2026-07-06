@@ -10,7 +10,7 @@ tags:
   - cabo-verde
   - underdogs
   - football
-image: https://2mc83gcpi8.ucarecd.net/2815689b-c22a-43fd-8af7-8ab417f3cedf/-/crop/399x410/0,28/-/preview/
+image: https://2mc83gcpi8.ucarecd.net/3fe9e5da-931b-45a3-89f5-bd7127b3c18c/-/crop/399x309/0,0/-/preview/
 publishDate: 2026-07-05T00:00:00.000Z
 author: Omar Khayam
 ---
