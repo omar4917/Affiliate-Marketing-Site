@@ -5,11 +5,13 @@ excerpt: From a nation of half a million to pushing world champions Argentina to
   Cabo Verde's historic 2026 World Cup run.
 category: Analysis
 tags:
-  - world-cup
+  - world cup
   - argentina
-  - cabo-verde
-  - underdogs
+  - cabo verde
+  - vozinha
   - football
+  - messi
+  - Blue Shark
 image: https://2mc83gcpi8.ucarecd.net/1197d2ae-7c53-4b21-9362-08f3e87e3adc/-/crop/399x352/0,26/-/preview/
 imageAlt: Messi vs Vozinha World Cup 2026 Round of 16
 imageTitle: Messi vs Vozinha World Cup 2026 Round of 16
