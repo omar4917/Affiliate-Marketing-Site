@@ -6,7 +6,7 @@ excerpt: From a nation of half a million to pushing world champions Argentina to
 category: Analysis
 tags:
   - world-cup
-  - tactics
+  - argentina
   - cabo-verde
   - underdogs
   - football
