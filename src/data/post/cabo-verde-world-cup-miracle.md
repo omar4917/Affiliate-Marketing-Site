@@ -46,4 +46,4 @@ Cabo Verde’s World Cup exit was heartbreaking, but their performance secured a
 
 By converting on-pitch success into long-term infrastructure, the Blue Sharks have built a sustainable foundation to remain a force in African football for years to come.
 
-![Argentina-v-Cabo-Verde-Round-of-32-FIFA-World-Cup-2026](/_astro/argentina-v-cabo-verde-round-of-32-fifa-world-cup-2026.avif)
+![Argentina-v-Cabo-Verde-Round-of-32-FIFA-World-Cup-2026](/images/blog-post-photos/argentina-v-cabo-verde-round-of-32-fifa-world-cup-2026.avif)
