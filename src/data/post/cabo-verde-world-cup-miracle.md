@@ -10,7 +10,7 @@ tags:
   - cabo-verde
   - underdogs
   - football
-image: /images/blog-post-photos/messi-vs-vozinha-world-cup-2026-round-of-16.jpg
+image: https://2mc83gcpi8.ucarecd.net/2815689b-c22a-43fd-8af7-8ab417f3cedf/-/crop/399x410/0,28/-/preview/
 publishDate: 2026-07-05T00:00:00.000Z
 author: Omar Khayam
 ---
