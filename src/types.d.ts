@@ -16,6 +16,8 @@ export interface Post {
   /** Optional summary of post content. */
   excerpt?: string;
   image?: ImageMetadata | string;
+  imageAlt?: string;
+  imageTitle?: string;
 
   category?: Taxonomy;
   tags?: Taxonomy[];
