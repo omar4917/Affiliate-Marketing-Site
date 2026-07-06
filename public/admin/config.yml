@@ -10,6 +10,13 @@ local_backend: true
 media_folder: 'public/images/blog-post-photos'
 public_folder: '/images/blog-post-photos'
 
+media_library:
+  name: uploadcare
+  config:
+    publicKey: 5b3cebb98babce9528b4
+    settings:
+      crop: 'free, 16:9, 1:1'
+
 collections:
   - name: 'post'
     label: 'Post'
