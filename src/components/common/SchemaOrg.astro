@@ -24,7 +24,7 @@ export interface Props {
 const { metadata = {} } = Astro.props;
 
 const isArticle = metadata.openGraph?.type === 'article';
-const articleDetails = (metadata as any).articleDetails || {};
+const articleDetails = metadata.articleDetails || {};
 
 const articleData = isArticle
   ? {
@@ -53,9 +53,7 @@ const organizationSchema = {
     '@type': 'ImageObject',
     url: `${siteUrl}/favicon.ico`,
   },
-  sameAs: [
-    'https://www.linkedin.com/in/omarkhayam4917/',
-  ],
+  sameAs: ['https://www.linkedin.com/in/omarkhayam4917/'],
 };
 
 // ── WebSite ───────────────────────────────────────────
@@ -89,9 +87,7 @@ const breadcrumbItems = [
   ...pathSegments.map((segment, index) => ({
     '@type': 'ListItem',
     position: index + 2,
-    name: segment
-      .replace(/-/g, ' ')
-      .replace(/\b\w/g, (c: string) => c.toUpperCase()),
+    name: segment.replace(/-/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase()),
     item: `${siteUrl}/${pathSegments.slice(0, index + 1).join('/')}`,
   })),
 ];
@@ -102,16 +98,14 @@ const breadcrumbSchema = {
 };
 
 // ── Article / BlogPosting ────────────────────────────
-let articleSchema = null;
+let articleSchema: Record<string, unknown> | null = null;
 if (isArticle && articleData) {
   articleSchema = {
     '@type': 'BlogPosting',
     '@id': `${articleData.url || currentUrl}#article`,
     headline: articleData.title || '',
     description: articleData.description || '',
-    datePublished: articleData.publishDate
-      ? new Date(articleData.publishDate).toISOString()
-      : undefined,
+    datePublished: articleData.publishDate ? new Date(articleData.publishDate).toISOString() : undefined,
     dateModified: articleData.updateDate
       ? new Date(articleData.updateDate).toISOString()
       : articleData.publishDate
@@ -133,7 +127,7 @@ if (isArticle && articleData) {
 }
 
 // ── Graph ─────────────────────────────────────────────
-const graph = [organizationSchema, websiteSchema, breadcrumbSchema];
+const graph: Array<Record<string, unknown>> = [organizationSchema, websiteSchema, breadcrumbSchema];
 if (articleSchema) {
   graph.push(articleSchema);
 }
