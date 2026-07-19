@@ -3,7 +3,7 @@ publishDate: 2026-06-05T00:00:00Z
 author: Tactical Analyst
 title: 'Top Resources and Tools for Football Coaches and Analysts'
 excerpt: 'From tactical boards to video analysis software, here is a curated list of resources to elevate your coaching.'
-image: https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1650&q=80
+image: https://images.unsplash.com/photo-1551958219-acbc608c6377?auto=format&fit=crop&w=1650&q=80
 category: Resources
 tags:
   - coaching
