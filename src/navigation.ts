@@ -13,10 +13,6 @@ export const headerData = {
           text: 'Best Boots (2026)',
           href: getPermalink('/best-boots'),
         },
-        {
-          text: 'Best Motherboards (2026)',
-          href: getPermalink('/reviews/motherboards'),
-        },
       ],
     },
     {
@@ -41,7 +37,6 @@ export const footerData = {
       title: 'Reviews',
       links: [
         { text: 'Best Boots (2026)', href: getPermalink('/best-boots') },
-        { text: 'Best Motherboards (2026)', href: getPermalink('/reviews/motherboards') },
       ],
     },
     {
