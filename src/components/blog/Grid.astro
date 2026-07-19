@@ -7,8 +7,22 @@ export interface Props {
 }
 
 const { posts } = Astro.props;
+
+// Assign card variants in Avision masonry pattern:
+// First post = large featured card, then alternate small variants
+const getVariant = (index: number): 'large' | 'small' | 'background' => {
+  if (index === 0) return 'large';
+  if (index % 3 === 0) return 'background';
+  return 'small';
+};
 ---
 
-<div class="grid gap-6 row-gap-5 md:grid-cols-2 lg:grid-cols-4 -mb-6">
-  {posts.map((post) => <Item post={post} />)}
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 -mb-6">
+  {
+    posts.map((post, index) => (
+      <div class:list={[index === 0 ? 'md:col-span-2 lg:col-span-2 md:row-span-2' : '']}>
+        <Item post={post} variant={getVariant(index)} />
+      </div>
+    ))
+  }
 </div>

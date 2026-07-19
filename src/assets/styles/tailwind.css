@@ -172,3 +172,26 @@ nav a.aw-link-active,
 nav button.aw-link-active {
   color: var(--aw-color-primary) !important;
 }
+
+/* Homepage header transparent state with white text */
+.homepage-header:not(.scroll) nav a,
+.homepage-header:not(.scroll) nav button {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+.homepage-header:not(.scroll) nav a:hover,
+.homepage-header:not(.scroll) nav button:hover {
+  color: rgba(255, 255, 255, 1) !important;
+}
+.homepage-header:not(.scroll) [data-aw-logo] {
+  color: #ffffff !important;
+}
+.homepage-header:not(.scroll) button[data-aw-toggle-color-scheme],
+.homepage-header:not(.scroll) a[aria-label='RSS Feed'],
+.homepage-header:not(.scroll) [data-aw-toggle-menu] {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+.homepage-header:not(.scroll) button[data-aw-toggle-color-scheme]:hover,
+.homepage-header:not(.scroll) a[aria-label='RSS Feed']:hover,
+.homepage-header:not(.scroll) [data-aw-toggle-menu]:hover {
+  color: #ffffff !important;
+}

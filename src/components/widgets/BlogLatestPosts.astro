@@ -36,23 +36,24 @@ const posts = APP_BLOG.isEnabled ? await findLatestPosts({ count }) : [];
 {
   APP_BLOG.isEnabled ? (
     <WidgetWrapper id={id} isDark={isDark} containerClass={classes?.container as string} bg={bg}>
-      <div class="flex flex-col lg:justify-between lg:flex-row mb-8">
+      {/* Avision-style section panel header */}
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-10 gap-4">
         {title && (
-          <div class="md:max-w-sm">
+          <div>
             <h2
-              class="text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none group font-heading mb-2"
+              class="avision-title text-2xl font-bold tracking-tight sm:text-3xl font-heading dark:text-slate-200 mb-0"
               set:html={title}
             />
-            {APP_BLOG.list.isEnabled && linkText && linkUrl && (
-              <Button variant="link" href={linkUrl}>
-                {' '}
-                {linkText} »
-              </Button>
-            )}
           </div>
         )}
-
-        {information && <p class="text-muted dark:text-slate-400 lg:text-sm lg:max-w-md" set:html={information} />}
+        <div class="flex items-center gap-6">
+          {information && <p class="text-muted dark:text-slate-400 text-sm max-w-md" set:html={information} />}
+          {APP_BLOG.list.isEnabled && linkText && linkUrl && (
+            <Button variant="link" href={linkUrl}>
+              {linkText} »
+            </Button>
+          )}
+        </div>
       </div>
 
       <Grid posts={posts} />

@@ -9,65 +9,201 @@ import { getPermalink } from '~/utils/permalinks';
 
 export interface Props {
   post: Post;
+  variant?: 'large' | 'small' | 'background';
 }
 
-const { post } = Astro.props;
+const { post, variant = 'small' } = Astro.props;
 const image = await findImage(post.image);
 
 const link = APP_BLOG?.post?.isEnabled ? getPermalink(post.permalink, 'post') : '';
 ---
 
-<article
-  class="mb-6 transition intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
->
-  <div class="relative md:h-64 bg-gray-400 dark:bg-slate-700 rounded-lg overflow-hidden shadow-md mb-6">
-    {
-      image &&
-        (link ? (
-          <a href={link} class="block overflow-hidden w-full h-full">
+{/* ===== LARGE CARD (Featured) ===== */}
+{
+  variant === 'large' && (
+    <article class="group h-full transition intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
+      <div class="bg-white dark:bg-slate-800 rounded-md overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300 h-full flex flex-col">
+        {image && (
+          <div class="relative overflow-hidden" style="min-height: 320px;">
+            {link ? (
+              <a href={link} class="block w-full h-full">
+                <Image
+                  src={image}
+                  class="w-full h-full object-cover transition duration-500 ease-out group-hover:scale-105"
+                  widths={[400, 900]}
+                  width={900}
+                  height={506}
+                  sizes="(max-width: 900px) 400px, 900px"
+                  alt={post.imageAlt || post.title}
+                  title={post.imageTitle || ''}
+                  format="webp"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </a>
+            ) : (
+              <Image
+                src={image}
+                class="w-full h-full object-cover"
+                widths={[400, 900]}
+                width={900}
+                height={506}
+                sizes="(max-width: 900px) 400px, 900px"
+                alt={post.imageAlt || post.title}
+                title={post.imageTitle || ''}
+                format="webp"
+                loading="lazy"
+                decoding="async"
+              />
+            )}
+          </div>
+        )}
+        <div class="p-6 flex-1 flex flex-col">
+          <h3 class="text-xl md:text-2xl font-bold leading-tight mb-3 font-heading dark:text-slate-200">
+            {link ? (
+              <a class="hover:text-primary dark:hover:text-primary transition duration-200" href={link}>
+                {post.title}
+              </a>
+            ) : (
+              post.title
+            )}
+          </h3>
+          {post.excerpt && (
+            <p class="text-muted dark:text-slate-400 text-sm leading-relaxed mb-4 flex-1">{post.excerpt}</p>
+          )}
+          <div class="text-xs text-muted dark:text-slate-500 font-medium">
+            {post.category && (
+              <span class="text-primary font-heading uppercase tracking-wider">{post.category} · </span>
+            )}
+            {post.publishDate && (
+              <time datetime={String(post.publishDate)}>
+                {new Date(post.publishDate).toLocaleDateString('en-US', {
+                  month: 'short',
+                  day: 'numeric',
+                  year: 'numeric',
+                })}
+              </time>
+            )}
+          </div>
+        </div>
+      </div>
+    </article>
+  )
+}
+
+{/* ===== SMALL CARD (with image) ===== */}
+{
+  variant === 'small' && (
+    <article class="group h-full transition intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
+      <div class="bg-white dark:bg-slate-800 rounded-md overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300 h-full flex flex-col">
+        {image && (
+          <div class="relative overflow-hidden h-48">
+            {link ? (
+              <a href={link} class="block w-full h-full">
+                <Image
+                  src={image}
+                  class="w-full h-full object-cover transition duration-500 ease-out group-hover:scale-105"
+                  widths={[400, 900]}
+                  width={400}
+                  height={225}
+                  sizes="(max-width: 767px) 400px, 400px"
+                  alt={post.imageAlt || post.title}
+                  title={post.imageTitle || ''}
+                  format="webp"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </a>
+            ) : (
+              <Image
+                src={image}
+                class="w-full h-full object-cover"
+                widths={[400, 900]}
+                width={400}
+                height={225}
+                sizes="(max-width: 767px) 400px, 400px"
+                alt={post.imageAlt || post.title}
+                title={post.imageTitle || ''}
+                format="webp"
+                loading="lazy"
+                decoding="async"
+              />
+            )}
+          </div>
+        )}
+        <div class="p-4 flex-1 flex flex-col">
+          <h3 class="text-sm font-bold leading-snug mb-2 font-heading dark:text-slate-200">
+            {link ? (
+              <a class="hover:text-primary dark:hover:text-primary transition duration-200" href={link}>
+                {post.title}
+              </a>
+            ) : (
+              post.title
+            )}
+          </h3>
+          <div class="text-xs text-muted dark:text-slate-500 font-medium mt-auto">
+            {post.publishDate && (
+              <time datetime={String(post.publishDate)}>
+                {new Date(post.publishDate).toLocaleDateString('en-US', {
+                  month: 'short',
+                  day: 'numeric',
+                  year: 'numeric',
+                })}
+              </time>
+            )}
+          </div>
+        </div>
+      </div>
+    </article>
+  )
+}
+
+{/* ===== BACKGROUND CARD (image as bg, text overlay) ===== */}
+{
+  variant === 'background' && (
+    <article class="group h-full transition intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
+      <div class="relative rounded-md overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300 h-full min-h-[220px]">
+        {image && (
+          <div class="absolute inset-0">
             <Image
               src={image}
-              class="w-full md:h-full object-cover transition duration-500 ease-out hover:scale-105 bg-gray-400 dark:bg-slate-700"
+              class="w-full h-full object-cover transition duration-500 ease-out group-hover:scale-105"
               widths={[400, 900]}
-              width={900}
-              height={506}
-              sizes="(max-width: 900px) 400px, 900px"
+              width={400}
+              height={300}
+              sizes="(max-width: 767px) 400px, 400px"
               alt={post.imageAlt || post.title}
               title={post.imageTitle || ''}
               format="webp"
               loading="lazy"
               decoding="async"
             />
-          </a>
-        ) : (
-          <Image
-            src={image}
-            class="w-full md:h-full object-cover transition duration-500 ease-out hover:scale-105 bg-gray-400 dark:bg-slate-700"
-            widths={[400, 900]}
-            width={900}
-            height={506}
-            sizes="(max-width: 900px) 400px, 900px"
-            alt={post.imageAlt || post.title}
-            title={post.imageTitle || ''}
-            format="webp"
-            loading="lazy"
-            decoding="async"
-          />
-        ))
-    }
-  </div>
-
-  <h3 class="text-xl sm:text-2xl font-bold leading-tight mb-2 font-heading dark:text-slate-300">
-    {
-      link ? (
-        <a class="inline-block hover:text-primary dark:hover:text-primary transition ease-in duration-200" href={link}>
-          {post.title}
-        </a>
-      ) : (
-        post.title
-      )
-    }
-  </h3>
-
-  <p class="text-muted dark:text-slate-400 text-lg">{post.excerpt}</p>
-</article>
+          </div>
+        )}
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+        <div class="relative z-10 h-full flex flex-col justify-end p-5">
+          <h3 class="text-sm font-bold leading-snug mb-2 font-heading text-white">
+            {link ? (
+              <a class="hover:text-primary transition duration-200" href={link}>
+                {post.title}
+              </a>
+            ) : (
+              post.title
+            )}
+          </h3>
+          <div class="text-xs text-white/60 font-medium">
+            {post.publishDate && (
+              <time datetime={String(post.publishDate)}>
+                {new Date(post.publishDate).toLocaleDateString('en-US', {
+                  month: 'short',
+                  day: 'numeric',
+                  year: 'numeric',
+                })}
+              </time>
+            )}
+          </div>
+        </div>
+      </div>
+    </article>
+  )
+}
