@@ -42,48 +42,48 @@ collections:
       - { label: 'Author', name: 'author', widget: 'string' }
       - { label: 'Content', name: 'body', widget: 'markdown' }
 
-  - name: 'settings'
-    label: 'Site Settings'
-    delete: false
-    files:
-      - name: 'hosting'
-        label: 'Boot Reviews'
-        file: 'src/data/hosting-providers.json'
+  - name: 'review'
+    label: 'Product Review'
+    folder: 'src/data/review'
+    create: true
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Category', name: 'category', widget: 'string' }
+      - { label: 'Product Image URL/File', name: 'image', widget: 'image' }
+      - { label: 'Rating', name: 'rating', widget: 'number', value_type: 'float' }
+      - { label: 'Best Price', name: 'price', widget: 'string' }
+      - { label: 'Short Verdict', name: 'verdict', widget: 'string' }
+      - {
+          label: 'Key Features List',
+          name: 'features',
+          widget: 'list',
+          field: { label: 'Feature', name: 'feature', widget: 'string' },
+        }
+      - { label: 'Affiliate URL', name: 'affiliateUrl', widget: 'string' }
+      - { label: 'CTA Text', name: 'ctaText', widget: 'string' }
+      - { label: 'Is Winner', name: 'isWinner', widget: 'boolean', required: false }
+      - { label: 'Winner Label (Badge)', name: 'winnerLabel', widget: 'string', required: false }
+      - {
+          label: 'Ribbon Color',
+          name: 'ribbonColor',
+          widget: 'select',
+          options: ['primary', 'secondary', 'accent', 'success', 'warning'],
+          required: false,
+        }
+      - { label: 'Review Description', name: 'description', widget: 'text' }
+      - label: 'Specs'
+        name: 'specs'
+        widget: 'object'
         fields:
-          - label: 'Football Boots List'
-            name: 'providers'
-            widget: 'list'
-            fields:
-              - { label: 'Title', name: 'title', widget: 'string' }
-              - { label: 'Logo Image URL', name: 'image', widget: 'string' }
-              - { label: 'Rating', name: 'rating', widget: 'number', value_type: 'float' }
-              - { label: 'Verdict', name: 'verdict', widget: 'string' }
-              - { label: 'Best Price', name: 'price', widget: 'string' }
-              - { label: 'Affiliate URL', name: 'affiliateUrl', widget: 'string' }
-              - { label: 'CTA Text', name: 'ctaText', widget: 'string' }
-              - { label: 'Is Winner', name: 'isWinner', widget: 'boolean', required: false }
-              - { label: 'Winner Label (Badge)', name: 'winnerLabel', widget: 'string', required: false }
-              - {
-                  label: 'Ribbon Color',
-                  name: 'ribbonColor',
-                  widget: 'select',
-                  options: ['primary', 'secondary', 'accent', 'success', 'warning'],
-                  required: false,
-                }
-              - { label: 'Review Description', name: 'description', widget: 'text' }
-              - label: 'Specs'
-                name: 'specs'
-                widget: 'object'
-                fields:
-                  - { label: 'Outsole Type', name: 'Outsole Type', widget: 'string' }
-                  - { label: 'Boot Weight', name: 'Boot Weight', widget: 'string' }
-                  - { label: 'Primary Focus', name: 'Primary Focus', widget: 'string' }
-                  - { label: 'Fit Profile', name: 'Fit Profile', widget: 'string' }
-              - label: 'Pros'
-                name: 'pros'
-                widget: 'list'
-                field: { label: 'Pro', name: 'pro', widget: 'string' }
-              - label: 'Cons'
-                name: 'cons'
-                widget: 'list'
-                field: { label: 'Con', name: 'con', widget: 'string' }
+          - { label: 'Outsole Type', name: 'Outsole Type', widget: 'string', required: false }
+          - { label: 'Boot Weight', name: 'Boot Weight', widget: 'string', required: false }
+          - { label: 'Primary Focus', name: 'Primary Focus', widget: 'string', required: false }
+          - { label: 'Fit Profile', name: 'Fit Profile', widget: 'string', required: false }
+      - label: 'Pros'
+        name: 'pros'
+        widget: 'list'
+        field: { label: 'Pro', name: 'pro', widget: 'string' }
+      - label: 'Cons'
+        name: 'cons'
+        widget: 'list'
+        field: { label: 'Con', name: 'con', widget: 'string' }

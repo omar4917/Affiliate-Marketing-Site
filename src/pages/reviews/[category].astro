@@ -1,0 +1,124 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import ComparisonTable from '~/components/ui/ComparisonTable.astro';
+import ProductReviewCard from '~/components/ui/ProductReviewCard.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+export async function getStaticPaths() {
+  const reviews = await getCollection('review');
+  const categories = [...new Set(reviews.map((post) => post.data.category))];
+  return categories.map((category) => ({
+    params: { category },
+    props: { category },
+  }));
+}
+
+const { category } = Astro.props;
+
+const reviews = await getCollection('review', ({ data }) => {
+  return data.category === category;
+});
+
+// Sort reviews by rating descending (highest rating first)
+const sortedReviews = reviews.sort((a, b) => (b.data.rating || 0) - (a.data.rating || 0));
+
+const reviewItems = sortedReviews.map((review) => ({
+  title: review.data.title,
+  image: review.data.image,
+  rating: review.data.rating,
+  verdict: review.data.verdict,
+  features: review.data.features,
+  price: review.data.price,
+  affiliateUrl: review.data.affiliateUrl,
+  ctaText: review.data.ctaText,
+  isWinner: review.data.isWinner,
+  winnerLabel: review.data.winnerLabel,
+  ribbonColor: review.data.ribbonColor,
+  description: review.data.description,
+  specs: review.data.specs,
+  pros: review.data.pros,
+  cons: review.data.cons,
+}));
+
+// Capitalize category name for the title
+const categoryTitle = category.charAt(0).toUpperCase() + category.slice(1);
+
+const metadata = {
+  title: `Best ${categoryTitle} of 2026: On-Pitch Reviews & Comparison`,
+  description: `Looking for the best ${category} in 2026? Read our detailed, on-pitch comparison and reviews.`,
+};
+---
+
+<Layout metadata={metadata}>
+  {/* Hero Section */}
+  <HeroText
+    tagline={`${categoryTitle} Comparison`}
+    title={`Best ${categoryTitle} for Players (2026)`}
+    subtitle={`Choosing the right ${category} can make or break your performance and prevent injury. We analyzed and tested the leading models.`}
+  />
+
+  {/* Comparison Table Section */}
+  {
+    reviewItems.length > 0 && (
+      <section class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="mb-6">
+          <h2 class="text-2xl font-bold font-heading text-heading">At a Glance: Top {categoryTitle} Compared</h2>
+          <p class="text-muted text-sm mt-1">
+            Here is a quick breakdown of how these top elite-level products stack up in pricing, rating, and
+            specifications.
+          </p>
+        </div>
+
+        <ComparisonTable items={reviewItems} />
+      </section>
+    )
+  }
+
+  {/* In-depth Review Cards */}
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 py-12 md:py-16">
+    <div class="mb-8 text-center">
+      <h2 class="text-3xl font-extrabold font-heading text-page">In-Depth Reviews</h2>
+      <p class="text-muted mt-2 max-w-xl mx-auto">
+        Read on for our detailed breakdown of each product's performance, pros, and cons.
+      </p>
+    </div>
+
+    {
+      reviewItems.map((item) => (
+        <ProductReviewCard
+          title={item.title}
+          image={item.image}
+          rating={item.rating}
+          price={item.price}
+          badge={item.winnerLabel}
+          ribbonColor={item.ribbonColor as 'primary' | 'secondary' | 'accent' | 'success' | 'warning'}
+          description={item.description}
+          specs={item.specs as unknown as Record<string, string>}
+          pros={item.pros}
+          cons={item.cons}
+          affiliateUrl={item.affiliateUrl}
+          ctaText={item.ctaText}
+        />
+      ))
+    }
+  </section>
+
+  {/* Call To Action */}
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Explore Guides',
+        href: '/blog',
+        icon: 'tabler:book',
+      },
+    ]}
+  >
+    <Fragment slot="title"> Want to elevate your play on the pitch? </Fragment>
+    <Fragment slot="subtitle">
+      Check out our drills and tactics guides to take your training to the next level.
+    </Fragment>
+  </CallToAction>
+</Layout>

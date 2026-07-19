@@ -68,6 +68,35 @@ const postCollection = defineCollection({
   }),
 });
 
+const reviewCollection = defineCollection({
+  loader: glob({ pattern: ['*.md', '*.mdx'], base: 'src/data/review' }),
+  schema: z.object({
+    publishDate: z.date().optional(),
+    updateDate: z.date().optional(),
+    draft: z.boolean().optional(),
+
+    title: z.string(),
+    category: z.string(),
+    image: z.string().optional(),
+    rating: z.number().optional(),
+    price: z.string().optional(),
+    verdict: z.string().optional(),
+    features: z.array(z.string()).optional(),
+    affiliateUrl: z.string(),
+    ctaText: z.string().optional(),
+    isWinner: z.boolean().optional(),
+    winnerLabel: z.string().optional(),
+    ribbonColor: z.enum(['primary', 'secondary', 'accent', 'success', 'warning']).optional(),
+    description: z.string().optional(),
+    specs: z.record(z.string(), z.string()).optional(),
+    pros: z.array(z.string()).optional(),
+    cons: z.array(z.string()).optional(),
+
+    metadata: metadataDefinition(),
+  }),
+});
+
 export const collections = {
   post: postCollection,
+  review: reviewCollection,
 };

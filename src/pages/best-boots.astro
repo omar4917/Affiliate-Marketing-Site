@@ -5,8 +5,32 @@ import ComparisonTable from '~/components/ui/ComparisonTable.astro';
 import ProductReviewCard from '~/components/ui/ProductReviewCard.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
-import hostingData from '~/data/hosting-providers.json';
-const hostingProviders = hostingData.providers;
+import { getCollection } from 'astro:content';
+
+const reviews = await getCollection('review', ({ data }) => {
+  return data.category === 'boots';
+});
+
+// Sort reviews by rating descending (highest rating first)
+const sortedReviews = reviews.sort((a, b) => (b.data.rating || 0) - (a.data.rating || 0));
+
+const hostingProviders = sortedReviews.map((review) => ({
+  title: review.data.title,
+  image: review.data.image,
+  rating: review.data.rating,
+  verdict: review.data.verdict,
+  features: review.data.features,
+  price: review.data.price,
+  affiliateUrl: review.data.affiliateUrl,
+  ctaText: review.data.ctaText,
+  isWinner: review.data.isWinner,
+  winnerLabel: review.data.winnerLabel,
+  ribbonColor: review.data.ribbonColor,
+  description: review.data.description,
+  specs: review.data.specs,
+  pros: review.data.pros,
+  cons: review.data.cons,
+}));
 
 const metadata = {
   title: 'Best Football Boots of 2026: On-Pitch Reviews & Comparison',
