@@ -7,6 +7,15 @@ export const headerData = {
       href: getPermalink('/'),
     },
     {
+      text: 'Reviews',
+      links: [
+        {
+          text: 'Best Boots (2026)',
+          href: getPermalink('/best-boots'),
+        },
+      ],
+    },
+    {
       text: 'Blog',
       href: getBlogPermalink(),
     },
@@ -24,6 +33,10 @@ export const headerData = {
 
 export const footerData = {
   links: [
+    {
+      title: 'Reviews',
+      links: [{ text: 'Best Boots (2026)', href: getPermalink('/best-boots') }],
+    },
     {
       title: 'Blog',
       links: [{ text: 'Articles', href: getBlogPermalink() }],
