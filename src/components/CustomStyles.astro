@@ -1,63 +1,49 @@
 ---
-import '@fontsource-variable/inter';
-
-// 'DM Sans'
-// Nunito
-// Dosis
-// Outfit
-// Roboto
-// Literata
-// 'IBM Plex Sans'
-// Karla
-// Poppins
-// 'Fira Sans'
-// 'Libre Franklin'
-// Inconsolata
-// Raleway
-// Oswald
-// 'Space Grotesk'
-// Urbanist
+// Loaded from Google Fonts for Avision theme styling: Ubuntu, Work Sans, Open Sans
 ---
 
 <style is:inline>
+  @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Ubuntu:wght@300;400;500;700&family=Work+Sans:wght@300;400;500;600;700;800;900&display=swap');
+
   :root {
-    --aw-font-sans: 'Inter Variable';
-    --aw-font-serif: 'Inter Variable';
-    --aw-font-heading: 'Inter Variable';
+    --aw-font-sans: 'Work Sans', sans-serif;
+    --aw-font-serif: 'Work Sans', sans-serif;
+    --aw-font-heading: 'Ubuntu', sans-serif;
 
-    --aw-color-primary: rgb(1 97 239);
-    --aw-color-secondary: rgb(1 84 207);
-    --aw-color-accent: rgb(109 40 217);
+    --aw-color-primary: rgb(255 99 71); /* Tomato: #FF6347 */
+    --aw-color-secondary: rgb(255 160 127); /* Salmon/Coral: #ffa07f */
+    --aw-color-accent: rgb(147 124 111); /* Taupe/Secondary brand: #937c6f */
 
-    --aw-color-text-heading: rgb(0 0 0);
-    --aw-color-text-default: rgb(16 16 16);
-    --aw-color-text-muted: rgb(16 16 16 / 66%);
-    --aw-color-bg-page: rgb(255 255 255);
+    --aw-color-text-heading: rgb(35 35 35); /* Very Dark Grey: #232323 */
+    --aw-color-text-default: rgb(35 35 35);
+    --aw-color-text-muted: rgb(165 165 165); /* Grey: #a5a5a5 */
+    --aw-color-bg-page: rgb(247 247 247); /* Page Bg: #f7f7f7 */
 
-    --aw-color-bg-page-dark: rgb(3 6 32);
+    --aw-color-bg-page-dark: rgb(21 21 21); /* Dark Mode Bg: #151515 */
 
     ::selection {
-      background-color: lavender;
+      background-color: rgba(255, 160, 127, 0.3);
+      color: rgb(35 35 35);
     }
   }
 
   .dark {
-    --aw-font-sans: 'Inter Variable';
-    --aw-font-serif: 'Inter Variable';
-    --aw-font-heading: 'Inter Variable';
+    --aw-font-sans: 'Work Sans', sans-serif;
+    --aw-font-serif: 'Work Sans', sans-serif;
+    --aw-font-heading: 'Ubuntu', sans-serif;
 
-    --aw-color-primary: rgb(1 97 239);
-    --aw-color-secondary: rgb(1 84 207);
-    --aw-color-accent: rgb(109 40 217);
+    --aw-color-primary: rgb(255 120 97); /* Lighter Tomato for contrast */
+    --aw-color-secondary: rgb(255 180 157); /* Lighter Salmon */
+    --aw-color-accent: rgb(180 160 150); /* Lighter Taupe */
 
-    --aw-color-text-heading: rgb(247, 248, 248);
-    --aw-color-text-default: rgb(229 236 246);
-    --aw-color-text-muted: rgb(229 236 246 / 66%);
-    --aw-color-bg-page: rgb(3 6 32);
+    --aw-color-text-heading: rgb(255 255 255);
+    --aw-color-text-default: rgb(220 220 220);
+    --aw-color-text-muted: rgb(150 150 150);
+    --aw-color-bg-page: rgb(21 21 21); /* Dark Mode Bg: #151515 */
 
     ::selection {
-      background-color: black;
-      color: snow;
+      background-color: rgba(255, 120, 97, 0.4);
+      color: rgb(255 255 255);
     }
   }
 </style>

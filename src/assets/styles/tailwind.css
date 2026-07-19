@@ -12,6 +12,7 @@
   --color-accent: var(--aw-color-accent);
   --color-default: var(--aw-color-text-default);
   --color-muted: var(--aw-color-text-muted);
+  --color-link: var(--aw-color-primary);
 
   --font-sans:
     'var(--aw-font-sans, ui-sans-serif)', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
@@ -54,11 +55,11 @@
 }
 
 @utility btn {
-  @apply inline-flex items-center justify-center rounded-full border-gray-400 border bg-transparent font-medium text-center text-base text-page leading-snug transition py-3.5 px-6 md:px-8 ease-in duration-200 focus:ring-blue-500 focus:ring-offset-blue-200 focus:ring-2 focus:ring-offset-2 hover:bg-gray-100 hover:border-gray-600 dark:text-slate-300 dark:border-slate-500 dark:hover:bg-slate-800 dark:hover:border-slate-800 cursor-pointer;
+  @apply inline-flex items-center justify-center rounded-full border border-gray-400/50 bg-transparent font-heading font-bold text-center text-xs uppercase tracking-widest leading-snug transition py-3 px-6 md:px-8 duration-200 focus:ring-primary focus:ring-2 hover:bg-gray-100 hover:border-gray-600 dark:text-slate-300 dark:border-slate-500 dark:hover:bg-slate-800 cursor-pointer;
 }
 
 @utility btn-primary {
-  @apply btn font-semibold bg-primary text-white border-primary hover:bg-secondary hover:border-secondary hover:text-white dark:text-white dark:bg-primary dark:border-primary dark:hover:border-secondary dark:hover:bg-secondary;
+  @apply btn bg-primary text-white border-primary hover:bg-secondary hover:border-secondary hover:text-white dark:text-white dark:bg-primary dark:border-primary dark:hover:border-secondary dark:hover:bg-secondary;
 }
 
 @utility btn-secondary {
@@ -69,14 +70,64 @@
   @apply btn border-none shadow-none text-muted hover:text-gray-900 dark:text-gray-400 dark:hover:text-white;
 }
 
+/* Scrolled Header Styling (Avision dark premium top-bar) */
 #header.scroll > div:first-child {
-  @apply bg-page md:bg-white/90 md:backdrop-blur-md;
-  box-shadow: 0 0.375rem 1.5rem 0 rgb(140 152 164 / 13%);
+  background-color: rgba(35, 35, 35, 0.95);
+  backdrop-filter: blur(12px);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 200ms ease;
 }
 .dark #header.scroll > div:first-child,
 #header.scroll.dark > div:first-child {
-  @apply bg-page md:bg-[#030621e6] border-b border-gray-500/20;
-  box-shadow: none;
+  background-color: rgba(21, 21, 21, 0.95);
+  backdrop-filter: blur(12px);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+#header.scroll nav a,
+#header.scroll nav button {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+#header.scroll nav a:hover,
+#header.scroll nav button:hover {
+  color: rgba(255, 255, 255, 1) !important;
+}
+#header.scroll nav .aw-link-active {
+  color: var(--aw-color-primary) !important;
+}
+#header.scroll [data-aw-logo] {
+  color: #ffffff !important;
+}
+#header.scroll button[data-aw-toggle-color-scheme],
+#header.scroll a[aria-label='RSS Feed'],
+#header.scroll [data-aw-toggle-menu] {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+#header.scroll button[data-aw-toggle-color-scheme]:hover,
+#header.scroll a[aria-label='RSS Feed']:hover,
+#header.scroll [data-aw-toggle-menu]:hover {
+  color: #ffffff !important;
+}
+
+/* Custom Avision UI Styles */
+.avision-title {
+  position: relative;
+  padding-bottom: 12px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+}
+.dark .avision-title {
+  border-bottom: 2px solid rgba(255, 255, 255, 0.05);
+}
+.avision-title::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background-color: var(--aw-color-primary);
 }
 
 #header.expanded nav {
@@ -114,4 +165,10 @@
 
 .dd *:first-child {
   margin-top: 0;
+}
+
+/* Active links styling */
+nav a.aw-link-active,
+nav button.aw-link-active {
+  color: var(--aw-color-primary) !important;
 }
