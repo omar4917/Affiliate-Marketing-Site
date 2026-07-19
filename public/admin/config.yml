@@ -47,10 +47,10 @@ collections:
     delete: false
     files:
       - name: 'hosting'
-        label: 'Hosting Reviews'
+        label: 'Boot Reviews'
         file: 'src/data/hosting-providers.json'
         fields:
-          - label: 'Hosting Providers List'
+          - label: 'Football Boots List'
             name: 'providers'
             widget: 'list'
             fields:
@@ -75,10 +75,10 @@ collections:
                 name: 'specs'
                 widget: 'object'
                 fields:
-                  - { label: 'Primary Framework', name: 'Primary Framework', widget: 'string' }
-                  - { label: 'Bandwidth Limit', name: 'Bandwidth Limit', widget: 'string' }
-                  - { label: 'Edge Functions', name: 'Edge Functions', widget: 'string' }
-                  - { label: 'Analytics', name: 'Analytics', widget: 'string' }
+                  - { label: 'Outsole Type', name: 'Outsole Type', widget: 'string' }
+                  - { label: 'Boot Weight', name: 'Boot Weight', widget: 'string' }
+                  - { label: 'Primary Focus', name: 'Primary Focus', widget: 'string' }
+                  - { label: 'Fit Profile', name: 'Fit Profile', widget: 'string' }
               - label: 'Pros'
                 name: 'pros'
                 widget: 'list'
