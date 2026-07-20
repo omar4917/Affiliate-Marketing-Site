@@ -63,6 +63,7 @@ Game changer... - Revolutionize...
 - Table (when useful)
 - FAQ
 - Related articles
+- External links (2–5 authoritative sources per article, e.g. FIFA, UEFA, official team pages, major outlets like The Guardian, AP News, BBC Sport)
 - Sources (if news)
 - Update timestamp
 - Affiliate block (only if relevant)

@@ -18,8 +18,8 @@ tags:
   - rodri
   - 2026 world cup final
 metadata:
-  title: 'Spain vs Argentina 2026 World Cup Final Match Review | Ferran Torres Winner'
-  description: 'Expert tactical match review and player ratings from the 2026 World Cup Final. Spain beat Argentina 1-0 AET after Ferran Torres scored in the 106th minute at MetLife Stadium.'
+  title: 'Spain 1–0 Argentina: 2026 World Cup Final Review'
+  description: 'Tactical match review and player ratings from the 2026 World Cup Final. Spain beat Argentina 1-0 AET with a Ferran Torres extra-time winner.'
 ---
 
 Spain are world champions again. A tense, tactical 1-0 extra-time victory over defending champions Argentina at MetLife Stadium ended the South Americans' reign and crowned La Roja for the second time.
@@ -30,7 +30,7 @@ Substitute Ferran Torres smashed home the decisive goal in the 106th minute afte
 
 ## Match facts and scoreline
 
-The showpiece final brought together the reigning champions of Europe and South America before a capacity crowd at MetLife Stadium in East Rutherford, New Jersey.
+The showpiece final brought together the reigning champions of Europe and South America before a capacity crowd at MetLife Stadium in East Rutherford, New Jersey. Full match details are available in the [official FIFA match report](https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/spain-argentina-final-report-highlights).
 
 | Match Parameter   | Detail                                          |
 | :---------------- | :---------------------------------------------- |
@@ -43,7 +43,7 @@ The showpiece final brought together the reigning champions of Europe and South 
 | **Referee**       | Slavko Vinčić (Slovenia)                        |
 | **Attendance**    | 80,663                                           |
 
-Spain's defensive record across the tournament set a historic benchmark: just one goal conceded in eight matches, a new World Cup record for a champion.
+Spain's defensive record across the tournament set a historic benchmark: just one goal conceded in eight matches, a new [World Cup record for a champion](https://www.theguardian.com/football/2026/jul/19/spain-win-world-cup-argentina-final-match-report).
 
 ---
 
@@ -100,11 +100,15 @@ Argentina threw bodies forward in search of an equalizer. Messi took a short cor
 
 ## Tactical analysis: Possession as a defensive shield
 
-Spain's triumph was built on a simple but ruthlessly executed principle — keep the ball to deny the opposition any chance of attacking.
+Spain's triumph was not simply about holding the ball. It was about *where* they held it and *what* it denied Argentina.
 
-Rodri acted as the absolute heartbeat of midfield, recycling possession and shutting down every attempted Argentine transition. He completed more passes than anyone else in the tournament. Dani Olmo and Fabian Ruiz created space in the half-spaces, while Yamal and Williams stretched the Argentine backline on the flanks.
+Luis de la Fuente deployed a 4-1-2-3 that deliberately overloaded Argentina's right side. Dani Olmo drifted into the left half-space while Cucurella pushed high and wide, creating a two-on-one against Gonzalo Montiel. This forced Argentina's midfield trio — De Paul, Enzo, Mac Allister — to shift laterally to compensate. Once Argentina compressed, Spain switched play through Rodri to the opposite flank, where Yamal had isolated Tagliafico in acres of space.
 
-The numbers tell the story. Spain's xG of 1.94 against Argentina's 0.22 represents total territorial dominance. Argentina managed just two shots across 120 minutes — neither on target. Spain's possession-heavy approach did not just create chances. It functioned as their primary defensive system.
+Rodri was the mechanism that made the entire system function. He sat in front of the center-backs as both a passing metronome and a transition killer. Every time Argentina won the ball and tried to spring Messi or Alvarez, Rodri's positioning cut the passing lane before it opened. He completed more passes than any other player in the tournament — but the passes he *prevented* mattered more.
+
+The xG gap tells the tactical story clearly. Spain generated 1.94 xG to Argentina's 0.22. Argentina managed just two shots across 120 minutes — neither on target. That is not a normal defensive performance. It reflects a team that never escaped Spain's territorial cage long enough to construct a meaningful attack.
+
+Spain's possession did not just create chances. It functioned as their primary [defensive system](https://news.northeastern.edu/2026/07/19/world-cup-final-2026/), suffocating Argentina's transition game at the source.
 
 ---
 
@@ -143,7 +147,7 @@ The numbers tell the story. Spain's xG of 1.94 against Argentina's 0.22 represen
 
 ## Turning point: Enzo Fernandez's red card
 
-The match hinged on the 93rd minute. Enzo Fernandez's reckless challenge on Cubarsi earned a second yellow and an early exit. Scaloni was forced to withdraw striker Julian Alvarez for defender Marcos Senesi at the start of extra time, completely removing Argentina's attacking threat.
+The match hinged on the 93rd minute. Enzo Fernandez's reckless challenge on Cubarsi earned a second yellow and an early exit, as [confirmed by the match officials](https://www.aljazeera.com/sports/2026/7/19/spain-battle-past-10-man-argentina-1-0-in-extra-time-to-win-2026-world-cup). Scaloni was forced to withdraw striker Julian Alvarez for defender Marcos Senesi at the start of extra time, completely removing Argentina's attacking threat.
 
 The chain reaction was clear: Fernandez red card → Alvarez sacrificed for Senesi → Argentina's attack neutralized → relentless Spain pressure → Torres goal.
 
@@ -188,7 +192,7 @@ Ferran Torres scored for Spain in the 106th minute of extra time, finishing a he
 
 ### Who won the Golden Ball at the 2026 World Cup?
 
-Spain's Rodri won the Golden Ball as the tournament's best player. Unai Simon won the Golden Glove, Pau Cubarsi claimed the Best Young Player Award, and France's Kylian Mbappé won the Golden Boot with ten goals.
+Spain's Rodri won the [Golden Ball](https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/award-winners) as the tournament's best player. Unai Simon won the Golden Glove, Pau Cubarsi claimed the Best Young Player Award, and France's Kylian Mbappé won the Golden Boot with ten goals.
 
 ### Why was Enzo Fernandez sent off?
 
@@ -204,4 +208,4 @@ The final was held at MetLife Stadium in East Rutherford, New Jersey, with an at
 
 ---
 
-*Sources: FIFA, The Guardian, Al Jazeera, AP News, PBS, NBC Sports, Fox Sports, The Washington Post, Wikipedia.*
+*Sources: [FIFA](https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/spain-argentina-final-report-highlights), [The Guardian](https://www.theguardian.com/football/2026/jul/19/spain-win-world-cup-argentina-final-match-report), [Al Jazeera](https://www.aljazeera.com/sports/2026/7/19/spain-battle-past-10-man-argentina-1-0-in-extra-time-to-win-2026-world-cup), [AP News](https://apnews.com/article/argentina-spain-world-cup-final-score-messi-fccc26aa12d9226e63d06b601b770617), [PBS](https://www.pbs.org/newshour/world/photos-spain-wins-the-world-cup-by-beating-argentina-1-0-on-ferran-torres-goal-in-extra-time), [NBC Sports](https://www.nbcsports.com/soccer/live/spain-vs-argentina-live-updates-score-goals-highlights-stats-2026-fifa-world-cup-july-19).*
