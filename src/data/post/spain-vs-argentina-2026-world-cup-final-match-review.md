@@ -4,9 +4,9 @@ updateDate: 2026-07-20T00:00:00Z
 author: Omar Khayam
 title: 'Spain vs Argentina 2026 World Cup Final Review: Torres Extra-Time Strike Crowns La Roja'
 excerpt: "Ferran Torres scored in the 106th minute to seal a 1-0 extra-time victory over 10-man Argentina at MetLife Stadium, handing Spain their second World Cup title and ending Messi's international career."
-image: /images/blog-post-photos/spain-world-cup-2026-final-celebration.png
-imageAlt: Spain World Cup 2026 Final celebration with red and gold confetti at MetLife Stadium
-imageTitle: Spain celebrate winning the 2026 FIFA World Cup Final
+image: https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=1650&q=80
+imageAlt: Football stadium packed with fans under bright lights during a major final
+imageTitle: 2026 FIFA World Cup Final at MetLife Stadium
 category: Match Reviews
 tags:
   - world cup

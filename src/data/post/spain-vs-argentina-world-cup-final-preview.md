@@ -3,7 +3,7 @@ publishDate: 2026-07-19T14:00:00Z
 author: Omar Khayam
 title: 'Spain vs Argentina World Cup 2026 Final: Facts, Hype, Quotes, and Key Battles'
 excerpt: 'The biggest match in football is here. We break down the verified head-to-head facts, tournament paths, manager quotes, and the Messi vs Yamal storyline ahead of the 2026 World Cup Final.'
-image: https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1650&q=80
+image: https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=1650&q=80
 imageAlt: FIFA World Cup final stadium under the lights
 imageTitle: Spain vs Argentina 2026 World Cup Final
 category: Previews
